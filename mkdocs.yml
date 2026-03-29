@@ -107,5 +107,6 @@ nav:
     - 演示与展示: teaching/demo.md
   - 建筑数据:
     - building/index.md
+    - 楼栋分区架构: building/zones.md
     - 楼层数据总览: building/floors.md
     - 语义映射表: building/semantic-map.md
