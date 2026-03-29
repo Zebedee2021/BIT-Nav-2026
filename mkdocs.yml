@@ -1,0 +1,108 @@
+site_name: BIT-Nav-2026 文萃楼智能导航系统
+site_url: https://zebedee2021.github.io/BIT-Nav-2026/
+site_description: 面向复杂楼宇群的室内外一体化具身导航系统 - 北京理工大学良乡校区
+site_author: Zebedee2021
+repo_name: Zebedee2021/BIT-Nav-2026
+repo_url: https://github.com/Zebedee2021/BIT-Nav-2026
+
+theme:
+  name: material
+  language: zh
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切换至暗色模式
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 切换至亮色模式
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search:
+      lang: zh
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.details
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Zebedee2021/BIT-Nav-2026
+
+nav:
+  - 首页: index.md
+  - 项目概述:
+    - overview/index.md
+    - 项目定位与价值: overview/positioning.md
+    - 核心挑战分析: overview/challenges.md
+    - 教学创新亮点: overview/innovation.md
+    - 系统架构总览: overview/architecture.md
+  - 系统架构设计:
+    - architecture/index.md
+    - 五层系统架构:
+      - architecture/five-layers/index.md
+      - 感知层: architecture/five-layers/perception.md
+      - 信号层: architecture/five-layers/signal.md
+      - 空间层: architecture/five-layers/space.md
+      - 智能层: architecture/five-layers/ai.md
+      - 行为层: architecture/five-layers/behavior.md
+    - 三层空间模型:
+      - architecture/space-model/index.md
+      - 物理空间建模: architecture/space-model/physical.md
+      - 语义空间建模: architecture/space-model/semantic.md
+      - 行为空间建模: architecture/space-model/action.md
+      - 统一具身空间: architecture/space-model/embodied.md
+    - 技术实现方案:
+      - architecture/tech/index.md
+      - 空间建模模块: architecture/tech/spatial.md
+      - 语义映射模块: architecture/tech/semantic-mapping.md
+      - 路径规划模块: architecture/tech/pathfinding.md
+      - 定位方案模块: architecture/tech/localization.md
+  - 技术实现指南:
+    - implementation/index.md
+    - 空间建模模块: implementation/spatial.md
+    - 语义映射模块: implementation/semantic.md
+    - 路径规划模块: implementation/pathfinding.md
+    - 交互展示模块: implementation/interaction.md
+  - 教学设计:
+    - teaching/index.md
+    - 四次课教学方案: teaching/curriculum.md
+    - 演示与展示: teaching/demo.md
+  - 建筑数据:
+    - building/index.md
+    - 楼层数据总览: building/floors.md
+    - 语义映射表: building/semantic-map.md

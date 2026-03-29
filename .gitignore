@@ -38,3 +38,6 @@ fontlist-*.json
 *.tmp
 *.bak
 src/test_floorplan_with_path.png
+
+# MkDocs
+site/
