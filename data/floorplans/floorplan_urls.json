@@ -11,7 +11,7 @@
       "floor": "overview",
       "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/0.bef0464b.jpg",
       "local_file": "overview_official.jpg",
-      "description": "文萃楼整体布局概览",
+      "description": "文萃楼3D总览 — 13个分区(A-M)构成U形楼宇群",
       "size_kb": 318
     },
     "1F": {
@@ -19,7 +19,7 @@
       "floor": "1F",
       "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/1.0823d977.jpg",
       "local_file": "1F_official.jpg",
-      "description": "一层入口层，包含东西门、A/B区教室、服务中心",
+      "description": "入口层，全部13区(A-M)+圆楼，门厅×2，约130间房",
       "size_kb": 569
     },
     "2F": {
@@ -27,7 +27,7 @@
       "floor": "2F",
       "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/2.15459f85.jpg",
       "local_file": "2F_official.jpg",
-      "description": "二层教学区",
+      "description": "大型教学区，全部13区+圆楼，约140间房",
       "size_kb": 561
     },
     "3F": {
@@ -35,7 +35,7 @@
       "floor": "3F",
       "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/3.4ffd1ff2.jpg",
       "local_file": "3F_official.jpg",
-      "description": "三层实验区",
+      "description": "教学/科研层，11区(无G/H裙房)+圆形教室，A区40+间，约150间房",
       "size_kb": 480
     },
     "4F": {
@@ -43,7 +43,7 @@
       "floor": "4F",
       "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/4.3df18153.jpg",
       "local_file": "4F_official.jpg",
-      "description": "四层办公区，包含教务办公室D402",
+      "description": "教学/科研层，11区+圆形教室，A区40+间，约150间房",
       "size_kb": 448
     },
     "5F": {
@@ -51,7 +51,7 @@
       "floor": "5F",
       "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/5.610039ee.jpg",
       "local_file": "5F_official.jpg",
-      "description": "五层研究区",
+      "description": "教学/科研层，11区+圆形教室，约150间房",
       "size_kb": 442
     },
     "6F": {
@@ -59,7 +59,7 @@
       "floor": "6F",
       "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/6.b4391480.jpg",
       "local_file": "6F_official.jpg",
-      "description": "六层",
+      "description": "教学/科研层，11区+圆形教室，约155间房",
       "size_kb": 454
     },
     "7F": {
@@ -67,7 +67,7 @@
       "floor": "7F",
       "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/7.446b34e2.jpg",
       "local_file": "7F_official.jpg",
-      "description": "七层",
+      "description": "教学/科研层(中高层最高)，11区+圆形教室，约160间房",
       "size_kb": 468
     },
     "8F": {
@@ -75,7 +75,7 @@
       "floor": "8F",
       "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/8.526e720e.jpg",
       "local_file": "8F_official.jpg",
-      "description": "八层",
+      "description": "角楼科研层，仅L/J/C/E四座角楼，约58间房",
       "size_kb": 318
     },
     "9F": {
@@ -83,7 +83,7 @@
       "floor": "9F",
       "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/9.ce43a12d.jpg",
       "local_file": "9F_official.jpg",
-      "description": "九层",
+      "description": "角楼科研层，仅L/J/C/E四座角楼，约62间房",
       "size_kb": 314
     },
     "10F": {
@@ -91,7 +91,7 @@
       "floor": "10F",
       "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/10.f5f9d829.jpg",
       "local_file": "10F_official.jpg",
-      "description": "十层",
+      "description": "最高层，仅L/J/C/E四座角楼，约56间房",
       "size_kb": 313
     }
   },

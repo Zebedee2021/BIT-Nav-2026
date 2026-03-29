@@ -1,7 +1,7 @@
 {
   "building": {
     "name": "文萃楼",
-    "description": "北京理工大学良乡校区文萃楼楼宇群",
+    "description": "北京理工大学良乡校区文萃楼 — 13个分区(A-M)构成的U形教学科研楼宇群",
     "floors": ["1F", "2F", "3F", "4F", "5F", "6F", "7F", "8F", "9F", "10F"]
   },
 
@@ -756,15 +756,15 @@
   ],
 
   "floor_layouts": {
-    "1F":  { "width": 200, "height": 200, "description": "一层平面：入口层，包含东西入口、A/B区教室、服务中心" },
-    "2F":  { "width": 200, "height": 200, "description": "二层平面：教学区，包含A/B区普通教室" },
-    "3F":  { "width": 200, "height": 200, "description": "三层平面：实验区，包含A/B区实验室" },
-    "4F":  { "width": 200, "height": 200, "description": "四层平面：办公区，包含D区教务办公室、会议室，A区教师办公室" },
-    "5F":  { "width": 200, "height": 200, "description": "五层平面：研究区，包含D区教研室，A区研究室" },
-    "6F":  { "width": 200, "height": 200, "description": "六层平面：研讨区，包含研讨室、小型会议室" },
-    "7F":  { "width": 200, "height": 200, "description": "七层平面：信息技术区，包含计算机机房、多媒体实训室" },
-    "8F":  { "width": 200, "height": 200, "description": "八层平面：学生活动区，包含活动室、自习室" },
-    "9F":  { "width": 200, "height": 200, "description": "九层平面：行政管理区，包含院长办公室、学工办公室" },
-    "10F": { "width": 200, "height": 200, "description": "十层平面：综合服务区，包含大会议室、报告厅、多功能厅" }
+    "1F":  { "width": 200, "height": 200, "description": "一层平面：入口层，全部13区(A-M)+圆楼，含门厅、入口、报告厅，约130间房" },
+    "2F":  { "width": 200, "height": 200, "description": "二层平面：大型教学区，全部13区+圆楼，约140间房" },
+    "3F":  { "width": 200, "height": 200, "description": "三层平面：教学/科研层，11区(无G/H裙房)+圆形教室，A区40+间，约150间房" },
+    "4F":  { "width": 200, "height": 200, "description": "四层平面：教学/科研层，11区+圆形教室，A区40+间，约150间房" },
+    "5F":  { "width": 200, "height": 200, "description": "五层平面：教学/科研层，11区+圆形教室，约150间房" },
+    "6F":  { "width": 200, "height": 200, "description": "六层平面：教学/科研层，11区+圆形教室，约155间房" },
+    "7F":  { "width": 200, "height": 200, "description": "七层平面：教学/科研层(中高层最高)，11区+圆形教室，约160间房" },
+    "8F":  { "width": 200, "height": 200, "description": "八层平面：角楼科研层，仅L/J/C/E四座角楼，约58间房" },
+    "9F":  { "width": 200, "height": 200, "description": "九层平面：角楼科研层，仅L/J/C/E四座角楼，约62间房" },
+    "10F": { "width": 200, "height": 200, "description": "十层平面：最高层，仅L/J/C/E四座角楼，约56间房" }
   }
 }
