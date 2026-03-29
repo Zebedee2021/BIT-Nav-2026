@@ -197,12 +197,13 @@ def main():
     # 侧边栏 - 导航设置
     st.sidebar.header("🎯 导航设置")
     
-    # 获取所有节点
-    all_nodes = list(graph.nodes.values())
+    # 获取可选节点（仅房间和入口，排除走廊/楼梯/电梯等内部节点）
+    selectable_nodes = [n for n in graph.nodes.values() if n.type in ('room', 'entrance')]
+    selectable_nodes.sort(key=lambda n: (int(n.floor.replace('F', '')), n.id))
     
     # 起点选择
     st.sidebar.subheader("📍 起点")
-    start_options = [(n.id, f"{n.name} ({n.floor})") for n in all_nodes]
+    start_options = [(n.id, f"{n.name} ({n.floor})") for n in selectable_nodes]
     start_id_to_name = {opt[0]: opt[1] for opt in start_options}
     start_node_id = st.sidebar.selectbox(
         "选择起点:",
