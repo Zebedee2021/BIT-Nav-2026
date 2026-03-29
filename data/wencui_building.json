@@ -1,0 +1,770 @@
+{
+  "building": {
+    "name": "文萃楼",
+    "description": "北京理工大学良乡校区文萃楼楼宇群",
+    "floors": ["1F", "2F", "3F", "4F", "5F", "6F", "7F", "8F", "9F", "10F"]
+  },
+
+  "nodes": {
+    "entrance_east_1F": {
+      "id": "entrance_east_1F", "type": "entrance", "floor": "1F",
+      "name": "东门入口", "description": "文萃楼一层东门入口",
+      "x": 100, "y": 20
+    },
+    "entrance_west_1F": {
+      "id": "entrance_west_1F", "type": "entrance", "floor": "1F",
+      "name": "西门入口", "description": "文萃楼一层西门入口",
+      "x": 100, "y": 180
+    },
+    "corridor_1F_main": {
+      "id": "corridor_1F_main", "type": "corridor", "floor": "1F",
+      "name": "一层主走廊", "description": "文萃楼一层主走廊",
+      "x": 100, "y": 100
+    },
+    "corridor_1F_A": {
+      "id": "corridor_1F_A", "type": "corridor", "floor": "1F",
+      "name": "一层A区走廊", "description": "文萃楼一层A区走廊",
+      "x": 50, "y": 100
+    },
+    "corridor_1F_B": {
+      "id": "corridor_1F_B", "type": "corridor", "floor": "1F",
+      "name": "一层B区走廊", "description": "文萃楼一层B区走廊",
+      "x": 150, "y": 100
+    },
+    "stairs_A_1F": {
+      "id": "stairs_A_1F", "type": "stairs", "floor": "1F",
+      "name": "A楼梯间", "description": "A区楼梯间（1-10层）",
+      "x": 30, "y": 100
+    },
+    "stairs_B_1F": {
+      "id": "stairs_B_1F", "type": "stairs", "floor": "1F",
+      "name": "B楼梯间", "description": "B区楼梯间（1-10层）",
+      "x": 170, "y": 100
+    },
+    "elevator_A_1F": {
+      "id": "elevator_A_1F", "type": "elevator", "floor": "1F",
+      "name": "A电梯", "description": "A区电梯（1-10层）",
+      "x": 50, "y": 60
+    },
+    "elevator_B_1F": {
+      "id": "elevator_B_1F", "type": "elevator", "floor": "1F",
+      "name": "B电梯", "description": "B区电梯（1-10层）",
+      "x": 150, "y": 60
+    },
+    "A101": {
+      "id": "A101", "type": "room", "floor": "1F",
+      "name": "A101", "description": "阶梯教室",
+      "x": 30, "y": 60
+    },
+    "A102": {
+      "id": "A102", "type": "room", "floor": "1F",
+      "name": "A102", "description": "多媒体教室",
+      "x": 30, "y": 140
+    },
+    "B101": {
+      "id": "B101", "type": "room", "floor": "1F",
+      "name": "B101", "description": "服务中心",
+      "x": 170, "y": 60
+    },
+    "B102": {
+      "id": "B102", "type": "room", "floor": "1F",
+      "name": "B102", "description": "快递收发室",
+      "x": 170, "y": 140
+    },
+
+    "corridor_2F_main": {
+      "id": "corridor_2F_main", "type": "corridor", "floor": "2F",
+      "name": "二层主走廊", "description": "文萃楼二层主走廊",
+      "x": 100, "y": 100
+    },
+    "corridor_2F_A": {
+      "id": "corridor_2F_A", "type": "corridor", "floor": "2F",
+      "name": "二层A区走廊", "description": "文萃楼二层A区走廊",
+      "x": 50, "y": 100
+    },
+    "corridor_2F_B": {
+      "id": "corridor_2F_B", "type": "corridor", "floor": "2F",
+      "name": "二层B区走廊", "description": "文萃楼二层B区走廊",
+      "x": 150, "y": 100
+    },
+    "stairs_A_2F": {
+      "id": "stairs_A_2F", "type": "stairs", "floor": "2F",
+      "name": "A楼梯间", "description": "A区楼梯间二层出口",
+      "x": 30, "y": 100
+    },
+    "stairs_B_2F": {
+      "id": "stairs_B_2F", "type": "stairs", "floor": "2F",
+      "name": "B楼梯间", "description": "B区楼梯间二层出口",
+      "x": 170, "y": 100
+    },
+    "elevator_A_2F": {
+      "id": "elevator_A_2F", "type": "elevator", "floor": "2F",
+      "name": "A电梯", "description": "A区电梯二层出口",
+      "x": 50, "y": 60
+    },
+    "elevator_B_2F": {
+      "id": "elevator_B_2F", "type": "elevator", "floor": "2F",
+      "name": "B电梯", "description": "B区电梯二层出口",
+      "x": 150, "y": 60
+    },
+    "A201": {
+      "id": "A201", "type": "room", "floor": "2F",
+      "name": "A201", "description": "普通教室",
+      "x": 30, "y": 60
+    },
+    "A202": {
+      "id": "A202", "type": "room", "floor": "2F",
+      "name": "A202", "description": "普通教室",
+      "x": 30, "y": 140
+    },
+    "B201": {
+      "id": "B201", "type": "room", "floor": "2F",
+      "name": "B201", "description": "普通教室",
+      "x": 170, "y": 60
+    },
+    "B202": {
+      "id": "B202", "type": "room", "floor": "2F",
+      "name": "B202", "description": "普通教室",
+      "x": 170, "y": 140
+    },
+
+    "corridor_3F_main": {
+      "id": "corridor_3F_main", "type": "corridor", "floor": "3F",
+      "name": "三层主走廊", "description": "文萃楼三层主走廊",
+      "x": 100, "y": 100
+    },
+    "corridor_3F_A": {
+      "id": "corridor_3F_A", "type": "corridor", "floor": "3F",
+      "name": "三层A区走廊", "description": "文萃楼三层A区走廊",
+      "x": 50, "y": 100
+    },
+    "corridor_3F_B": {
+      "id": "corridor_3F_B", "type": "corridor", "floor": "3F",
+      "name": "三层B区走廊", "description": "文萃楼三层B区走廊",
+      "x": 150, "y": 100
+    },
+    "stairs_A_3F": {
+      "id": "stairs_A_3F", "type": "stairs", "floor": "3F",
+      "name": "A楼梯间", "description": "A区楼梯间三层出口",
+      "x": 30, "y": 100
+    },
+    "stairs_B_3F": {
+      "id": "stairs_B_3F", "type": "stairs", "floor": "3F",
+      "name": "B楼梯间", "description": "B区楼梯间三层出口",
+      "x": 170, "y": 100
+    },
+    "elevator_A_3F": {
+      "id": "elevator_A_3F", "type": "elevator", "floor": "3F",
+      "name": "A电梯", "description": "A区电梯三层出口",
+      "x": 50, "y": 60
+    },
+    "elevator_B_3F": {
+      "id": "elevator_B_3F", "type": "elevator", "floor": "3F",
+      "name": "B电梯", "description": "B区电梯三层出口",
+      "x": 150, "y": 60
+    },
+    "A301": {
+      "id": "A301", "type": "room", "floor": "3F",
+      "name": "A301", "description": "生物实验室",
+      "x": 30, "y": 60
+    },
+    "A302": {
+      "id": "A302", "type": "room", "floor": "3F",
+      "name": "A302", "description": "化学实验室",
+      "x": 30, "y": 140
+    },
+    "B301": {
+      "id": "B301", "type": "room", "floor": "3F",
+      "name": "B301", "description": "物理实验室",
+      "x": 170, "y": 60
+    },
+    "B302": {
+      "id": "B302", "type": "room", "floor": "3F",
+      "name": "B302", "description": "电子实验室",
+      "x": 170, "y": 140
+    },
+
+    "corridor_4F_main": {
+      "id": "corridor_4F_main", "type": "corridor", "floor": "4F",
+      "name": "四层主走廊", "description": "文萃楼四层主走廊",
+      "x": 100, "y": 100
+    },
+    "corridor_4F_A": {
+      "id": "corridor_4F_A", "type": "corridor", "floor": "4F",
+      "name": "四层A区走廊", "description": "文萃楼四层A区走廊",
+      "x": 50, "y": 100
+    },
+    "corridor_4F_B": {
+      "id": "corridor_4F_B", "type": "corridor", "floor": "4F",
+      "name": "四层B区走廊", "description": "文萃楼四层B区走廊",
+      "x": 150, "y": 100
+    },
+    "stairs_A_4F": {
+      "id": "stairs_A_4F", "type": "stairs", "floor": "4F",
+      "name": "A楼梯间", "description": "A区楼梯间四层出口",
+      "x": 30, "y": 100
+    },
+    "stairs_B_4F": {
+      "id": "stairs_B_4F", "type": "stairs", "floor": "4F",
+      "name": "B楼梯间", "description": "B区楼梯间四层出口",
+      "x": 170, "y": 100
+    },
+    "elevator_A_4F": {
+      "id": "elevator_A_4F", "type": "elevator", "floor": "4F",
+      "name": "A电梯", "description": "A区电梯四层出口",
+      "x": 50, "y": 60
+    },
+    "elevator_B_4F": {
+      "id": "elevator_B_4F", "type": "elevator", "floor": "4F",
+      "name": "B电梯", "description": "B区电梯四层出口",
+      "x": 150, "y": 60
+    },
+    "A401": {
+      "id": "A401", "type": "room", "floor": "4F",
+      "name": "A401", "description": "教师办公室",
+      "x": 30, "y": 60
+    },
+    "A402": {
+      "id": "A402", "type": "room", "floor": "4F",
+      "name": "A402", "description": "教师办公室",
+      "x": 30, "y": 140
+    },
+    "D401": {
+      "id": "D401", "type": "room", "floor": "4F",
+      "name": "D401", "description": "教师办公室",
+      "x": 80, "y": 80
+    },
+    "D402": {
+      "id": "D402", "type": "room", "floor": "4F",
+      "name": "D402", "description": "教务办公室",
+      "x": 120, "y": 80
+    },
+    "D403": {
+      "id": "D403", "type": "room", "floor": "4F",
+      "name": "D403", "description": "会议室",
+      "x": 140, "y": 80
+    },
+    "D404": {
+      "id": "D404", "type": "room", "floor": "4F",
+      "name": "D404", "description": "研究生工作室",
+      "x": 160, "y": 80
+    },
+
+    "corridor_5F_main": {
+      "id": "corridor_5F_main", "type": "corridor", "floor": "5F",
+      "name": "五层主走廊", "description": "文萃楼五层主走廊",
+      "x": 100, "y": 100
+    },
+    "corridor_5F_A": {
+      "id": "corridor_5F_A", "type": "corridor", "floor": "5F",
+      "name": "五层A区走廊", "description": "文萃楼五层A区走廊",
+      "x": 50, "y": 100
+    },
+    "corridor_5F_B": {
+      "id": "corridor_5F_B", "type": "corridor", "floor": "5F",
+      "name": "五层B区走廊", "description": "文萃楼五层B区走廊",
+      "x": 150, "y": 100
+    },
+    "stairs_A_5F": {
+      "id": "stairs_A_5F", "type": "stairs", "floor": "5F",
+      "name": "A楼梯间", "description": "A区楼梯间五层出口",
+      "x": 30, "y": 100
+    },
+    "stairs_B_5F": {
+      "id": "stairs_B_5F", "type": "stairs", "floor": "5F",
+      "name": "B楼梯间", "description": "B区楼梯间五层出口",
+      "x": 170, "y": 100
+    },
+    "elevator_A_5F": {
+      "id": "elevator_A_5F", "type": "elevator", "floor": "5F",
+      "name": "A电梯", "description": "A区电梯五层出口",
+      "x": 50, "y": 60
+    },
+    "elevator_B_5F": {
+      "id": "elevator_B_5F", "type": "elevator", "floor": "5F",
+      "name": "B电梯", "description": "B区电梯五层出口",
+      "x": 150, "y": 60
+    },
+    "A501": {
+      "id": "A501", "type": "room", "floor": "5F",
+      "name": "A501", "description": "研究室",
+      "x": 30, "y": 60
+    },
+    "A502": {
+      "id": "A502", "type": "room", "floor": "5F",
+      "name": "A502", "description": "研究室",
+      "x": 30, "y": 140
+    },
+    "D501": {
+      "id": "D501", "type": "room", "floor": "5F",
+      "name": "D501", "description": "教师工作室",
+      "x": 80, "y": 80
+    },
+    "D502": {
+      "id": "D502", "type": "room", "floor": "5F",
+      "name": "D502", "description": "教研室",
+      "x": 120, "y": 80
+    },
+    "D503": {
+      "id": "D503", "type": "room", "floor": "5F",
+      "name": "D503", "description": "研究生工作室",
+      "x": 140, "y": 80
+    },
+    "D504": {
+      "id": "D504", "type": "room", "floor": "5F",
+      "name": "D504", "description": "教师工作室",
+      "x": 160, "y": 80
+    },
+
+    "corridor_6F_main": {
+      "id": "corridor_6F_main", "type": "corridor", "floor": "6F",
+      "name": "六层主走廊", "description": "文萃楼六层主走廊",
+      "x": 100, "y": 100
+    },
+    "corridor_6F_A": {
+      "id": "corridor_6F_A", "type": "corridor", "floor": "6F",
+      "name": "六层A区走廊", "description": "文萃楼六层A区走廊",
+      "x": 50, "y": 100
+    },
+    "corridor_6F_B": {
+      "id": "corridor_6F_B", "type": "corridor", "floor": "6F",
+      "name": "六层B区走廊", "description": "文萃楼六层B区走廊",
+      "x": 150, "y": 100
+    },
+    "stairs_A_6F": {
+      "id": "stairs_A_6F", "type": "stairs", "floor": "6F",
+      "name": "A楼梯间", "description": "A区楼梯间六层出口",
+      "x": 30, "y": 100
+    },
+    "stairs_B_6F": {
+      "id": "stairs_B_6F", "type": "stairs", "floor": "6F",
+      "name": "B楼梯间", "description": "B区楼梯间六层出口",
+      "x": 170, "y": 100
+    },
+    "elevator_A_6F": {
+      "id": "elevator_A_6F", "type": "elevator", "floor": "6F",
+      "name": "A电梯", "description": "A区电梯六层出口",
+      "x": 50, "y": 60
+    },
+    "elevator_B_6F": {
+      "id": "elevator_B_6F", "type": "elevator", "floor": "6F",
+      "name": "B电梯", "description": "B区电梯六层出口",
+      "x": 150, "y": 60
+    },
+    "A601": {
+      "id": "A601", "type": "room", "floor": "6F",
+      "name": "A601", "description": "研讨室",
+      "x": 30, "y": 60
+    },
+    "A602": {
+      "id": "A602", "type": "room", "floor": "6F",
+      "name": "A602", "description": "研讨室",
+      "x": 30, "y": 140
+    },
+    "B601": {
+      "id": "B601", "type": "room", "floor": "6F",
+      "name": "B601", "description": "小型会议室",
+      "x": 170, "y": 60
+    },
+    "B602": {
+      "id": "B602", "type": "room", "floor": "6F",
+      "name": "B602", "description": "小型会议室",
+      "x": 170, "y": 140
+    },
+
+    "corridor_7F_main": {
+      "id": "corridor_7F_main", "type": "corridor", "floor": "7F",
+      "name": "七层主走廊", "description": "文萃楼七层主走廊",
+      "x": 100, "y": 100
+    },
+    "corridor_7F_A": {
+      "id": "corridor_7F_A", "type": "corridor", "floor": "7F",
+      "name": "七层A区走廊", "description": "文萃楼七层A区走廊",
+      "x": 50, "y": 100
+    },
+    "corridor_7F_B": {
+      "id": "corridor_7F_B", "type": "corridor", "floor": "7F",
+      "name": "七层B区走廊", "description": "文萃楼七层B区走廊",
+      "x": 150, "y": 100
+    },
+    "stairs_A_7F": {
+      "id": "stairs_A_7F", "type": "stairs", "floor": "7F",
+      "name": "A楼梯间", "description": "A区楼梯间七层出口",
+      "x": 30, "y": 100
+    },
+    "stairs_B_7F": {
+      "id": "stairs_B_7F", "type": "stairs", "floor": "7F",
+      "name": "B楼梯间", "description": "B区楼梯间七层出口",
+      "x": 170, "y": 100
+    },
+    "elevator_A_7F": {
+      "id": "elevator_A_7F", "type": "elevator", "floor": "7F",
+      "name": "A电梯", "description": "A区电梯七层出口",
+      "x": 50, "y": 60
+    },
+    "elevator_B_7F": {
+      "id": "elevator_B_7F", "type": "elevator", "floor": "7F",
+      "name": "B电梯", "description": "B区电梯七层出口",
+      "x": 150, "y": 60
+    },
+    "A701": {
+      "id": "A701", "type": "room", "floor": "7F",
+      "name": "A701", "description": "计算机机房",
+      "x": 30, "y": 60
+    },
+    "A702": {
+      "id": "A702", "type": "room", "floor": "7F",
+      "name": "A702", "description": "计算机教室",
+      "x": 30, "y": 140
+    },
+    "B701": {
+      "id": "B701", "type": "room", "floor": "7F",
+      "name": "B701", "description": "多媒体实训室",
+      "x": 170, "y": 60
+    },
+    "B702": {
+      "id": "B702", "type": "room", "floor": "7F",
+      "name": "B702", "description": "语音教室",
+      "x": 170, "y": 140
+    },
+
+    "corridor_8F_main": {
+      "id": "corridor_8F_main", "type": "corridor", "floor": "8F",
+      "name": "八层主走廊", "description": "文萃楼八层主走廊",
+      "x": 100, "y": 100
+    },
+    "corridor_8F_A": {
+      "id": "corridor_8F_A", "type": "corridor", "floor": "8F",
+      "name": "八层A区走廊", "description": "文萃楼八层A区走廊",
+      "x": 50, "y": 100
+    },
+    "corridor_8F_B": {
+      "id": "corridor_8F_B", "type": "corridor", "floor": "8F",
+      "name": "八层B区走廊", "description": "文萃楼八层B区走廊",
+      "x": 150, "y": 100
+    },
+    "stairs_A_8F": {
+      "id": "stairs_A_8F", "type": "stairs", "floor": "8F",
+      "name": "A楼梯间", "description": "A区楼梯间八层出口",
+      "x": 30, "y": 100
+    },
+    "stairs_B_8F": {
+      "id": "stairs_B_8F", "type": "stairs", "floor": "8F",
+      "name": "B楼梯间", "description": "B区楼梯间八层出口",
+      "x": 170, "y": 100
+    },
+    "elevator_A_8F": {
+      "id": "elevator_A_8F", "type": "elevator", "floor": "8F",
+      "name": "A电梯", "description": "A区电梯八层出口",
+      "x": 50, "y": 60
+    },
+    "elevator_B_8F": {
+      "id": "elevator_B_8F", "type": "elevator", "floor": "8F",
+      "name": "B电梯", "description": "B区电梯八层出口",
+      "x": 150, "y": 60
+    },
+    "A801": {
+      "id": "A801", "type": "room", "floor": "8F",
+      "name": "A801", "description": "学生活动室",
+      "x": 30, "y": 60
+    },
+    "A802": {
+      "id": "A802", "type": "room", "floor": "8F",
+      "name": "A802", "description": "社团活动室",
+      "x": 30, "y": 140
+    },
+    "B801": {
+      "id": "B801", "type": "room", "floor": "8F",
+      "name": "B801", "description": "自习室",
+      "x": 170, "y": 60
+    },
+    "B802": {
+      "id": "B802", "type": "room", "floor": "8F",
+      "name": "B802", "description": "自习室",
+      "x": 170, "y": 140
+    },
+
+    "corridor_9F_main": {
+      "id": "corridor_9F_main", "type": "corridor", "floor": "9F",
+      "name": "九层主走廊", "description": "文萃楼九层主走廊",
+      "x": 100, "y": 100
+    },
+    "corridor_9F_A": {
+      "id": "corridor_9F_A", "type": "corridor", "floor": "9F",
+      "name": "九层A区走廊", "description": "文萃楼九层A区走廊",
+      "x": 50, "y": 100
+    },
+    "corridor_9F_B": {
+      "id": "corridor_9F_B", "type": "corridor", "floor": "9F",
+      "name": "九层B区走廊", "description": "文萃楼九层B区走廊",
+      "x": 150, "y": 100
+    },
+    "stairs_A_9F": {
+      "id": "stairs_A_9F", "type": "stairs", "floor": "9F",
+      "name": "A楼梯间", "description": "A区楼梯间九层出口",
+      "x": 30, "y": 100
+    },
+    "stairs_B_9F": {
+      "id": "stairs_B_9F", "type": "stairs", "floor": "9F",
+      "name": "B楼梯间", "description": "B区楼梯间九层出口",
+      "x": 170, "y": 100
+    },
+    "elevator_A_9F": {
+      "id": "elevator_A_9F", "type": "elevator", "floor": "9F",
+      "name": "A电梯", "description": "A区电梯九层出口",
+      "x": 50, "y": 60
+    },
+    "elevator_B_9F": {
+      "id": "elevator_B_9F", "type": "elevator", "floor": "9F",
+      "name": "B电梯", "description": "B区电梯九层出口",
+      "x": 150, "y": 60
+    },
+    "A901": {
+      "id": "A901", "type": "room", "floor": "9F",
+      "name": "A901", "description": "院长办公室",
+      "x": 30, "y": 60
+    },
+    "A902": {
+      "id": "A902", "type": "room", "floor": "9F",
+      "name": "A902", "description": "副院长办公室",
+      "x": 30, "y": 140
+    },
+    "B901": {
+      "id": "B901", "type": "room", "floor": "9F",
+      "name": "B901", "description": "学工办公室",
+      "x": 170, "y": 60
+    },
+    "B902": {
+      "id": "B902", "type": "room", "floor": "9F",
+      "name": "B902", "description": "党委办公室",
+      "x": 170, "y": 140
+    },
+
+    "corridor_10F_main": {
+      "id": "corridor_10F_main", "type": "corridor", "floor": "10F",
+      "name": "十层主走廊", "description": "文萃楼十层主走廊",
+      "x": 100, "y": 100
+    },
+    "corridor_10F_A": {
+      "id": "corridor_10F_A", "type": "corridor", "floor": "10F",
+      "name": "十层A区走廊", "description": "文萃楼十层A区走廊",
+      "x": 50, "y": 100
+    },
+    "corridor_10F_B": {
+      "id": "corridor_10F_B", "type": "corridor", "floor": "10F",
+      "name": "十层B区走廊", "description": "文萃楼十层B区走廊",
+      "x": 150, "y": 100
+    },
+    "stairs_A_10F": {
+      "id": "stairs_A_10F", "type": "stairs", "floor": "10F",
+      "name": "A楼梯间", "description": "A区楼梯间十层出口",
+      "x": 30, "y": 100
+    },
+    "stairs_B_10F": {
+      "id": "stairs_B_10F", "type": "stairs", "floor": "10F",
+      "name": "B楼梯间", "description": "B区楼梯间十层出口",
+      "x": 170, "y": 100
+    },
+    "elevator_A_10F": {
+      "id": "elevator_A_10F", "type": "elevator", "floor": "10F",
+      "name": "A电梯", "description": "A区电梯十层出口",
+      "x": 50, "y": 60
+    },
+    "elevator_B_10F": {
+      "id": "elevator_B_10F", "type": "elevator", "floor": "10F",
+      "name": "B电梯", "description": "B区电梯十层出口",
+      "x": 150, "y": 60
+    },
+    "A1001": {
+      "id": "A1001", "type": "room", "floor": "10F",
+      "name": "A1001", "description": "大会议室",
+      "x": 30, "y": 60
+    },
+    "A1002": {
+      "id": "A1002", "type": "room", "floor": "10F",
+      "name": "A1002", "description": "报告厅",
+      "x": 30, "y": 140
+    },
+    "B1001": {
+      "id": "B1001", "type": "room", "floor": "10F",
+      "name": "B1001", "description": "多功能厅",
+      "x": 170, "y": 60
+    },
+    "B1002": {
+      "id": "B1002", "type": "room", "floor": "10F",
+      "name": "B1002", "description": "贵宾接待室",
+      "x": 170, "y": 140
+    }
+  },
+
+  "edges": [
+    ["entrance_east_1F", "corridor_1F_main"],
+    ["entrance_west_1F", "corridor_1F_main"],
+    ["corridor_1F_main", "corridor_1F_A"],
+    ["corridor_1F_main", "corridor_1F_B"],
+    ["corridor_1F_A", "stairs_A_1F"],
+    ["corridor_1F_A", "elevator_A_1F"],
+    ["corridor_1F_A", "A101"],
+    ["corridor_1F_A", "A102"],
+    ["corridor_1F_B", "stairs_B_1F"],
+    ["corridor_1F_B", "elevator_B_1F"],
+    ["corridor_1F_B", "B101"],
+    ["corridor_1F_B", "B102"],
+
+    ["corridor_2F_main", "corridor_2F_A"],
+    ["corridor_2F_main", "corridor_2F_B"],
+    ["corridor_2F_A", "stairs_A_2F"],
+    ["corridor_2F_A", "elevator_A_2F"],
+    ["corridor_2F_A", "A201"],
+    ["corridor_2F_A", "A202"],
+    ["corridor_2F_B", "stairs_B_2F"],
+    ["corridor_2F_B", "elevator_B_2F"],
+    ["corridor_2F_B", "B201"],
+    ["corridor_2F_B", "B202"],
+
+    ["corridor_3F_main", "corridor_3F_A"],
+    ["corridor_3F_main", "corridor_3F_B"],
+    ["corridor_3F_A", "stairs_A_3F"],
+    ["corridor_3F_A", "elevator_A_3F"],
+    ["corridor_3F_A", "A301"],
+    ["corridor_3F_A", "A302"],
+    ["corridor_3F_B", "stairs_B_3F"],
+    ["corridor_3F_B", "elevator_B_3F"],
+    ["corridor_3F_B", "B301"],
+    ["corridor_3F_B", "B302"],
+
+    ["corridor_4F_main", "corridor_4F_A"],
+    ["corridor_4F_main", "corridor_4F_B"],
+    ["corridor_4F_A", "stairs_A_4F"],
+    ["corridor_4F_A", "elevator_A_4F"],
+    ["corridor_4F_A", "A401"],
+    ["corridor_4F_A", "A402"],
+    ["corridor_4F_B", "stairs_B_4F"],
+    ["corridor_4F_B", "elevator_B_4F"],
+    ["corridor_4F_main", "D401"],
+    ["corridor_4F_main", "D402"],
+    ["corridor_4F_main", "D403"],
+    ["corridor_4F_B", "D404"],
+
+    ["corridor_5F_main", "corridor_5F_A"],
+    ["corridor_5F_main", "corridor_5F_B"],
+    ["corridor_5F_A", "stairs_A_5F"],
+    ["corridor_5F_A", "elevator_A_5F"],
+    ["corridor_5F_A", "A501"],
+    ["corridor_5F_A", "A502"],
+    ["corridor_5F_B", "stairs_B_5F"],
+    ["corridor_5F_B", "elevator_B_5F"],
+    ["corridor_5F_main", "D501"],
+    ["corridor_5F_main", "D502"],
+    ["corridor_5F_main", "D503"],
+    ["corridor_5F_B", "D504"],
+
+    ["corridor_6F_main", "corridor_6F_A"],
+    ["corridor_6F_main", "corridor_6F_B"],
+    ["corridor_6F_A", "stairs_A_6F"],
+    ["corridor_6F_A", "elevator_A_6F"],
+    ["corridor_6F_A", "A601"],
+    ["corridor_6F_A", "A602"],
+    ["corridor_6F_B", "stairs_B_6F"],
+    ["corridor_6F_B", "elevator_B_6F"],
+    ["corridor_6F_B", "B601"],
+    ["corridor_6F_B", "B602"],
+
+    ["corridor_7F_main", "corridor_7F_A"],
+    ["corridor_7F_main", "corridor_7F_B"],
+    ["corridor_7F_A", "stairs_A_7F"],
+    ["corridor_7F_A", "elevator_A_7F"],
+    ["corridor_7F_A", "A701"],
+    ["corridor_7F_A", "A702"],
+    ["corridor_7F_B", "stairs_B_7F"],
+    ["corridor_7F_B", "elevator_B_7F"],
+    ["corridor_7F_B", "B701"],
+    ["corridor_7F_B", "B702"],
+
+    ["corridor_8F_main", "corridor_8F_A"],
+    ["corridor_8F_main", "corridor_8F_B"],
+    ["corridor_8F_A", "stairs_A_8F"],
+    ["corridor_8F_A", "elevator_A_8F"],
+    ["corridor_8F_A", "A801"],
+    ["corridor_8F_A", "A802"],
+    ["corridor_8F_B", "stairs_B_8F"],
+    ["corridor_8F_B", "elevator_B_8F"],
+    ["corridor_8F_B", "B801"],
+    ["corridor_8F_B", "B802"],
+
+    ["corridor_9F_main", "corridor_9F_A"],
+    ["corridor_9F_main", "corridor_9F_B"],
+    ["corridor_9F_A", "stairs_A_9F"],
+    ["corridor_9F_A", "elevator_A_9F"],
+    ["corridor_9F_A", "A901"],
+    ["corridor_9F_A", "A902"],
+    ["corridor_9F_B", "stairs_B_9F"],
+    ["corridor_9F_B", "elevator_B_9F"],
+    ["corridor_9F_B", "B901"],
+    ["corridor_9F_B", "B902"],
+
+    ["corridor_10F_main", "corridor_10F_A"],
+    ["corridor_10F_main", "corridor_10F_B"],
+    ["corridor_10F_A", "stairs_A_10F"],
+    ["corridor_10F_A", "elevator_A_10F"],
+    ["corridor_10F_A", "A1001"],
+    ["corridor_10F_A", "A1002"],
+    ["corridor_10F_B", "stairs_B_10F"],
+    ["corridor_10F_B", "elevator_B_10F"],
+    ["corridor_10F_B", "B1001"],
+    ["corridor_10F_B", "B1002"],
+
+    ["stairs_A_1F", "stairs_A_2F"],
+    ["stairs_A_2F", "stairs_A_3F"],
+    ["stairs_A_3F", "stairs_A_4F"],
+    ["stairs_A_4F", "stairs_A_5F"],
+    ["stairs_A_5F", "stairs_A_6F"],
+    ["stairs_A_6F", "stairs_A_7F"],
+    ["stairs_A_7F", "stairs_A_8F"],
+    ["stairs_A_8F", "stairs_A_9F"],
+    ["stairs_A_9F", "stairs_A_10F"],
+
+    ["stairs_B_1F", "stairs_B_2F"],
+    ["stairs_B_2F", "stairs_B_3F"],
+    ["stairs_B_3F", "stairs_B_4F"],
+    ["stairs_B_4F", "stairs_B_5F"],
+    ["stairs_B_5F", "stairs_B_6F"],
+    ["stairs_B_6F", "stairs_B_7F"],
+    ["stairs_B_7F", "stairs_B_8F"],
+    ["stairs_B_8F", "stairs_B_9F"],
+    ["stairs_B_9F", "stairs_B_10F"],
+
+    ["elevator_A_1F", "elevator_A_2F"],
+    ["elevator_A_2F", "elevator_A_3F"],
+    ["elevator_A_3F", "elevator_A_4F"],
+    ["elevator_A_4F", "elevator_A_5F"],
+    ["elevator_A_5F", "elevator_A_6F"],
+    ["elevator_A_6F", "elevator_A_7F"],
+    ["elevator_A_7F", "elevator_A_8F"],
+    ["elevator_A_8F", "elevator_A_9F"],
+    ["elevator_A_9F", "elevator_A_10F"],
+
+    ["elevator_B_1F", "elevator_B_2F"],
+    ["elevator_B_2F", "elevator_B_3F"],
+    ["elevator_B_3F", "elevator_B_4F"],
+    ["elevator_B_4F", "elevator_B_5F"],
+    ["elevator_B_5F", "elevator_B_6F"],
+    ["elevator_B_6F", "elevator_B_7F"],
+    ["elevator_B_7F", "elevator_B_8F"],
+    ["elevator_B_8F", "elevator_B_9F"],
+    ["elevator_B_9F", "elevator_B_10F"]
+  ],
+
+  "floor_layouts": {
+    "1F":  { "width": 200, "height": 200, "description": "一层平面：入口层，包含东西入口、A/B区教室、服务中心" },
+    "2F":  { "width": 200, "height": 200, "description": "二层平面：教学区，包含A/B区普通教室" },
+    "3F":  { "width": 200, "height": 200, "description": "三层平面：实验区，包含A/B区实验室" },
+    "4F":  { "width": 200, "height": 200, "description": "四层平面：办公区，包含D区教务办公室、会议室，A区教师办公室" },
+    "5F":  { "width": 200, "height": 200, "description": "五层平面：研究区，包含D区教研室，A区研究室" },
+    "6F":  { "width": 200, "height": 200, "description": "六层平面：研讨区，包含研讨室、小型会议室" },
+    "7F":  { "width": 200, "height": 200, "description": "七层平面：信息技术区，包含计算机机房、多媒体实训室" },
+    "8F":  { "width": 200, "height": 200, "description": "八层平面：学生活动区，包含活动室、自习室" },
+    "9F":  { "width": 200, "height": 200, "description": "九层平面：行政管理区，包含院长办公室、学工办公室" },
+    "10F": { "width": 200, "height": 200, "description": "十层平面：综合服务区，包含大会议室、报告厅、多功能厅" }
+  }
+}

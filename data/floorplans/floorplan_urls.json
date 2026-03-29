@@ -1,0 +1,113 @@
+{
+  "source": "北京理工大学文萃楼官方3D导航平台",
+  "platform_url": "https://wencuigis.info.bit.edu.cn/3dbuilding/#/building2",
+  "description": "官方楼层平面图URL列表，已下载到本地",
+  "update_date": "2026-03-27",
+  "download_status": "completed",
+  
+  "floorplans": {
+    "overview": {
+      "name": "文萃楼总览图",
+      "floor": "overview",
+      "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/0.bef0464b.jpg",
+      "local_file": "overview_official.jpg",
+      "description": "文萃楼整体布局概览",
+      "size_kb": 318
+    },
+    "1F": {
+      "name": "一层组合平面图",
+      "floor": "1F",
+      "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/1.0823d977.jpg",
+      "local_file": "1F_official.jpg",
+      "description": "一层入口层，包含东西门、A/B区教室、服务中心",
+      "size_kb": 569
+    },
+    "2F": {
+      "name": "二层组合平面图",
+      "floor": "2F",
+      "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/2.15459f85.jpg",
+      "local_file": "2F_official.jpg",
+      "description": "二层教学区",
+      "size_kb": 561
+    },
+    "3F": {
+      "name": "三层组合平面图",
+      "floor": "3F",
+      "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/3.4ffd1ff2.jpg",
+      "local_file": "3F_official.jpg",
+      "description": "三层实验区",
+      "size_kb": 480
+    },
+    "4F": {
+      "name": "四层组合平面图",
+      "floor": "4F",
+      "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/4.3df18153.jpg",
+      "local_file": "4F_official.jpg",
+      "description": "四层办公区，包含教务办公室D402",
+      "size_kb": 448
+    },
+    "5F": {
+      "name": "五层组合平面图",
+      "floor": "5F",
+      "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/5.610039ee.jpg",
+      "local_file": "5F_official.jpg",
+      "description": "五层研究区",
+      "size_kb": 442
+    },
+    "6F": {
+      "name": "六层组合平面图",
+      "floor": "6F",
+      "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/6.b4391480.jpg",
+      "local_file": "6F_official.jpg",
+      "description": "六层",
+      "size_kb": 454
+    },
+    "7F": {
+      "name": "七层组合平面图",
+      "floor": "7F",
+      "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/7.446b34e2.jpg",
+      "local_file": "7F_official.jpg",
+      "description": "七层",
+      "size_kb": 468
+    },
+    "8F": {
+      "name": "八层组合平面图",
+      "floor": "8F",
+      "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/8.526e720e.jpg",
+      "local_file": "8F_official.jpg",
+      "description": "八层",
+      "size_kb": 318
+    },
+    "9F": {
+      "name": "九层组合平面图",
+      "floor": "9F",
+      "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/9.ce43a12d.jpg",
+      "local_file": "9F_official.jpg",
+      "description": "九层",
+      "size_kb": 314
+    },
+    "10F": {
+      "name": "十层组合平面图",
+      "floor": "10F",
+      "url": "https://wencuigis.info.bit.edu.cn/3dbuilding/img/10.f5f9d829.jpg",
+      "local_file": "10F_official.jpg",
+      "description": "十层",
+      "size_kb": 313
+    }
+  },
+  
+  "coordinate_mapping": {
+    "description": "图片坐标与逻辑坐标的映射关系（需要手动校准）",
+    "note": "由于官方图片坐标系与我们的拓扑图坐标系不同，需要建立映射",
+    "mapping_method": "手动标注关键点，建立仿射变换矩阵",
+    "example": {
+      "1F": {
+        "image_size": {"width": 1920, "height": 1080},
+        "reference_points": [
+          {"logical": {"x": 100, "y": 20}, "image": {"x": 960, "y": 200}, "label": "东门"},
+          {"logical": {"x": 100, "y": 180}, "image": {"x": 960, "y": 880}, "label": "西门"}
+        ]
+      }
+    }
+  }
+}
