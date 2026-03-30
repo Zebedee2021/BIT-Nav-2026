@@ -11,6 +11,7 @@
 - **楼层图可视化** — 在楼层平面图上叠加导航路径，起点/终点/中间节点清晰标注
 - **多楼层顺序显示** — 跨楼层路径按楼层分段展示，楼梯/电梯过渡指示
 - **方位导航** — 指南针模拟 + 东南西北/前后左右双模式方位指引
+- **系统托盘管理** — Windows 托盘程序，一键启动/停止服务，快速打开页面
 - **完整建筑数据** — 10 层楼、110+ 节点、A/B 双区结构化数据
 
 ## 项目结构
@@ -19,21 +20,40 @@
 BIT-Nav-2026/
 ├── app.py                          # Streamlit 主程序
 ├── requirements.txt                # Python 依赖
+├── launcher/                       # 系统托盘启动器
+│   ├── BIT-Nav-Tray.ps1           # PowerShell 托盘程序
+│   ├── start-service.ps1          # 服务启动脚本
+│   ├── BIT-Nav-Launcher.vbs       # VBS 启动器
+│   └── 启动托盘.bat                # 批处理启动文件
 ├── data/
 │   ├── wencui_building.json        # 建筑拓扑数据（节点/边/坐标）
+│   ├── wencui_building_aligned.json # 校准后的建筑数据
 │   ├── semantic_mapping.json       # 语义映射配置
-│   └── floorplans/                 # 楼层平面图
-│       ├── 1F.png ~ 10F.png        # 各楼层平面图
-│       ├── overview.png            # 总览图
-│       └── floorplan_urls.json     # 楼层图元数据
+│   ├── floorplans/                 # 楼层平面图（原始）
+│   ├── floorplans_aligned/         # 校准后的楼层图
+│   └── floorplans_standardized/    # 标准化后的楼层图
 ├── src/
 │   ├── pathfinding.py              # A* 路径规划算法
 │   ├── semantic_mapper.py          # 自然语言语义映射
 │   ├── floorplan_visualizer.py     # 楼层图可视化
 │   ├── orientation_navigator.py    # 方位导航模块
 │   ├── compass_widget.py           # 指南针组件
-│   ├── generate_sample_floorplans.py  # 楼层图生成脚本
-│   └── llm_navigator.py           # LLM 导航接口（预留）
+│   ├── llm_navigator.py            # LLM 导航接口
+│   ├── align_floorplans.py         # 楼层图校准工具
+│   ├── standardize_floorplans.py   # 楼层图标准化工具
+│   ├── room_label_detector.py      # 房间标签检测器
+│   └── test_navigation.py          # 导航测试脚本
+├── docs/                           # 项目文档（MkDocs）
+│   ├── architecture/               # 架构文档
+│   ├── building/                   # 建筑数据文档
+│   ├── implementation/             # 实现文档
+│   ├── overview/                   # 项目概览
+│   └── teaching/                   # 教学文档
+├── tools/                          # 辅助工具
+│   ├── annotate_floorplan.py       # 楼层图标注工具
+│   └── generate_building_graph.py  # 建筑图生成工具
+├── skills/                         # Qoder Skills
+│   └── powershell-gui-open-url/    # PowerShell GUI 打开 URL
 └── wencui/                         # 官方平台截图参考
 ```
 
@@ -55,6 +75,24 @@ streamlit run app.py
 ```
 
 浏览器访问 http://localhost:8501
+
+### 系统托盘启动（推荐）
+
+Windows 用户可以使用系统托盘程序管理导航服务：
+
+```bash
+# 方式1：双击运行
+launcher\启动托盘.bat
+
+# 方式2：PowerShell 直接运行
+powershell -ExecutionPolicy Bypass -File launcher\BIT-Nav-Tray.ps1
+```
+
+托盘功能：
+- **Start Service** — 启动 Streamlit 服务（自动检测可用端口）
+- **Stop Service** — 停止服务
+- **Open Page** — 打开浏览器访问导航页面
+- **双击托盘图标** — 快速打开页面
 
 ### 使用方式
 
@@ -94,10 +132,16 @@ streamlit run app.py
          → 方位导航(OrientationNavigator) → 方向指引
 ```
 
+## 文档
+
+完整文档请访问：
+- 在线文档：https://zebedee2021.github.io/BIT-Nav-2026/
+- 本地文档：`docs/` 目录（MkDocs 构建）
+
 ## 课程信息
 
 北京理工大学 2025-2026 学年第二学期教学项目
 
 ---
 
-*教学演示版 v1.0*
+*教学演示版 v1.1*
