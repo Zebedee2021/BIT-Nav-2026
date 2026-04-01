@@ -1,0 +1,324 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>WenCui Nav Manager</title>
+<HTA:APPLICATION
+  ID="NavManager"
+  APPLICATIONNAME="WenCuiNav"
+  BORDER="dialog"
+  BORDERSTYLE="normal"
+  CAPTION="yes"
+  MAXIMIZEBUTTON="no"
+  MINIMIZEBUTTON="yes"
+  SHOWINTASKBAR="yes"
+  SINGLEINSTANCE="yes"
+  SYSMENU="yes"
+  WINDOWSTATE="normal"
+/>
+<style>
+body {
+    font-family: "Microsoft YaHei", "SimHei", sans-serif;
+    background: #f0f2f6;
+    margin: 0; padding: 20px;
+    user-select: none;
+}
+.header {
+    font-size: 20px; font-weight: bold; color: #1f77b4;
+    margin-bottom: 16px; text-align: center;
+}
+.card {
+    background: #fff; border-radius: 8px; padding: 14px 16px;
+    margin-bottom: 12px; border: 1px solid #e0e0e0;
+}
+.label { color: #888; font-size: 12px; margin-bottom: 4px; }
+.value { font-size: 15px; font-weight: bold; }
+.running { color: #4CAF50; }
+.stopped { color: #e53935; }
+.starting { color: #FF9800; }
+.btn {
+    display: block; width: 100%; padding: 10px 0; margin: 6px 0;
+    border: none; border-radius: 6px; font-size: 14px;
+    cursor: pointer; font-family: "Microsoft YaHei", sans-serif;
+    text-align: center;
+}
+.btn:hover { opacity: 0.85; }
+.btn-start { background: #1f77b4; color: #fff; }
+.btn-open  { background: #4CAF50; color: #fff; }
+.btn-exit  { background: #e53935; color: #fff; }
+.btn[disabled] { background: #ccc; color: #999; cursor: default; }
+.port-row { display: flex; align-items: center; margin-top: 4px; }
+.port-input {
+    width: 72px; padding: 4px 6px; border: 1px solid #ccc;
+    border-radius: 4px; font-size: 14px; text-align: center;
+}
+.port-hint { color: #aaa; font-size: 11px; margin-left: 8px; }
+.log-box {
+    width: 100%; height: 80px; margin-top: 8px;
+    background: #1e1e1e; color: #b5cea8; font-family: Consolas, monospace;
+    font-size: 11px; padding: 6px 8px; border: none; border-radius: 4px;
+    resize: none; overflow-y: auto;
+}
+.footer {
+    margin-top: 12px; color: #bbb; font-size: 11px; text-align: center;
+}
+</style>
+
+<script language="VBScript">
+Option Explicit
+
+Dim serverPID, currentPort, isRunning, appDir
+
+Sub Window_OnLoad()
+    window.resizeTo 370, 520
+    Dim sw, sh
+    sw = window.screen.availWidth
+    sh = window.screen.availHeight
+    window.moveTo (sw - 370) \ 2, (sh - 520) \ 2
+
+    serverPID = 0
+    currentPort = 0
+    isRunning = False
+
+    ' Resolve HTA directory as app directory
+    Dim rawPath
+    rawPath = Replace(document.location.pathname, "/", "\")
+    If Left(rawPath, 1) = "\" Then rawPath = Mid(rawPath, 2)
+    rawPath = Unescape(rawPath)
+    appDir = Left(rawPath, InStrRev(rawPath, "\"))
+
+    LogMsg "Manager initialized"
+    LogMsg "App dir: " & appDir
+
+    ' Auto start after short delay
+    window.setTimeout "AutoStart", 600
+End Sub
+
+' ---------- Port detection ----------
+
+Function IsPortListening(port)
+    Dim sh, ex, output, lines, i, line, searchStr
+    Set sh = CreateObject("WScript.Shell")
+    Set ex = sh.Exec("netstat -ano -p tcp")
+    output = ex.StdOut.ReadAll()
+    searchStr = ":" & CStr(port) & " "
+    lines = Split(output, vbCrLf)
+    For i = 0 To UBound(lines)
+        line = UCase(Trim(lines(i)))
+        If InStr(line, searchStr) > 0 And InStr(line, "LISTENING") > 0 Then
+            IsPortListening = True
+            Exit Function
+        End If
+    Next
+    IsPortListening = False
+End Function
+
+Function FindAvailablePort(startPort)
+    Dim p
+    p = startPort
+    Do While IsPortListening(p)
+        p = p + 1
+        If p > startPort + 100 Then
+            p = startPort
+            Exit Do
+        End If
+    Loop
+    FindAvailablePort = p
+End Function
+
+' ---------- Process management ----------
+
+Sub AutoStart()
+    StartServer
+End Sub
+
+Sub StartServer()
+    If isRunning Then
+        StopServer
+        window.setTimeout "StartServer", 1200
+        Exit Sub
+    End If
+
+    Dim desiredPort
+    On Error Resume Next
+    desiredPort = CInt(document.getElementById("portInput").value)
+    If Err.Number <> 0 Then desiredPort = 8501
+    On Error GoTo 0
+
+    LogMsg "Detecting available port from " & desiredPort & " ..."
+    currentPort = FindAvailablePort(desiredPort)
+    document.getElementById("portInput").value = CStr(currentPort)
+
+    If currentPort <> desiredPort Then
+        LogMsg "Port " & desiredPort & " occupied, using " & currentPort
+    End If
+
+    UpdateStatus "Starting ...", "starting"
+
+    ' Launch via WMI to capture PID
+    Dim objWMI, objProc, objStartup, cmd, errRet
+    Set objWMI = GetObject("winmgmts:\\.\root\cimv2")
+    Set objProc = objWMI.Get("Win32_Process")
+    Set objStartup = objWMI.Get("Win32_ProcessStartup").SpawnInstance_()
+    objStartup.ShowWindow = 0  ' SW_HIDE
+
+    cmd = "cmd /c python -m streamlit run """ & appDir & "app.py"" --server.port " & currentPort & " --server.headless true"
+
+    errRet = objProc.Create(cmd, appDir, objStartup, serverPID)
+
+    If errRet = 0 Then
+        isRunning = True
+        LogMsg "Process launched  PID=" & serverPID & "  port=" & currentPort
+        window.setTimeout "ConfirmRunning", 3500
+    Else
+        LogMsg "ERROR: Launch failed (code " & errRet & ")"
+        UpdateStatus "Launch failed", "stopped"
+        isRunning = False
+    End If
+    UpdateButtons
+End Sub
+
+Sub ConfirmRunning()
+    If isRunning Then
+        If IsPortListening(currentPort) Then
+            UpdateStatus "Running - port " & currentPort, "running"
+            LogMsg "Server confirmed on port " & currentPort
+        Else
+            UpdateStatus "Starting (waiting) ...", "starting"
+            window.setTimeout "ConfirmRunning", 2000
+        End If
+    End If
+End Sub
+
+Sub StopServer()
+    If Not isRunning And serverPID = 0 Then Exit Sub
+
+    Dim sh
+    Set sh = CreateObject("WScript.Shell")
+
+    ' Kill process tree
+    If serverPID > 0 Then
+        sh.Run "taskkill /f /pid " & serverPID & " /t", 0, True
+        LogMsg "Killed PID " & serverPID & " tree"
+    End If
+
+    ' Fallback: kill anything still on the port
+    KillByPort currentPort
+
+    serverPID = 0
+    isRunning = False
+    UpdateStatus "Stopped", "stopped"
+    UpdateButtons
+End Sub
+
+Sub KillByPort(port)
+    Dim sh, ex, output, lines, i, line, pid, searchStr
+    Set sh = CreateObject("WScript.Shell")
+    Set ex = sh.Exec("netstat -ano -p tcp")
+    output = ex.StdOut.ReadAll()
+    searchStr = ":" & CStr(port) & " "
+    lines = Split(output, vbCrLf)
+    For i = 0 To UBound(lines)
+        line = Trim(lines(i))
+        If InStr(line, searchStr) > 0 And InStr(UCase(line), "LISTENING") > 0 Then
+            pid = ExtractPID(line)
+            If pid <> "" And pid <> "0" Then
+                sh.Run "taskkill /f /pid " & pid, 0, True
+                LogMsg "Killed port-holder PID " & pid
+            End If
+        End If
+    Next
+End Sub
+
+Function ExtractPID(line)
+    Dim s, parts
+    s = Trim(line)
+    Do While InStr(s, "  ") > 0
+        s = Replace(s, "  ", " ")
+    Loop
+    parts = Split(s, " ")
+    If UBound(parts) >= 0 Then
+        ExtractPID = Trim(parts(UBound(parts)))
+    Else
+        ExtractPID = ""
+    End If
+End Function
+
+' ---------- UI helpers ----------
+
+Sub OpenBrowser()
+    If Not isRunning Then
+        MsgBox "Server is not running. Please start it first.", vbExclamation, "Hint"
+        Exit Sub
+    End If
+    Dim sh
+    Set sh = CreateObject("WScript.Shell")
+    sh.Run "rundll32 url.dll,FileProtocolHandler http://localhost:" & currentPort, 1, False
+    LogMsg "Opened browser -> localhost:" & currentPort
+End Sub
+
+Sub ExitApp()
+    StopServer
+    self.close
+End Sub
+
+Sub UpdateStatus(txt, cls)
+    Dim el
+    Set el = document.getElementById("statusText")
+    el.innerText = txt
+    el.className = "value " & cls
+End Sub
+
+Sub UpdateButtons()
+    If isRunning Then
+        document.getElementById("btnStart").innerText = "Restart"
+        document.getElementById("btnOpen").disabled = False
+    Else
+        document.getElementById("btnStart").innerText = "Start"
+        document.getElementById("btnOpen").disabled = True
+    End If
+End Sub
+
+Sub LogMsg(msg)
+    Dim box
+    Set box = document.getElementById("logBox")
+    If box.value <> "" Then box.value = box.value & vbCrLf
+    box.value = box.value & "[" & FormatDateTime(Now, 4) & "] " & msg
+    box.scrollTop = box.scrollHeight
+End Sub
+
+Sub Window_OnBeforeUnload()
+    StopServer
+End Sub
+</script>
+</head>
+
+<body onunload="StopServer">
+
+<div class="header">WenCui Nav Manager</div>
+
+<div class="card">
+    <div class="label">Status</div>
+    <div id="statusText" class="value stopped">Initializing ...</div>
+</div>
+
+<div class="card">
+    <div class="label">Port</div>
+    <div class="port-row">
+        <input type="text" id="portInput" class="port-input" value="8501" />
+        <span class="port-hint">Auto-detect on start</span>
+    </div>
+</div>
+
+<button id="btnStart" class="btn btn-start" onclick="StartServer">Start</button>
+<button id="btnOpen"  class="btn btn-open"  onclick="OpenBrowser" disabled="true">Open Browser</button>
+<button               class="btn btn-exit"  onclick="ExitApp">Exit</button>
+
+<div class="card" style="margin-top:8px; padding:8px 12px;">
+    <div class="label">Log</div>
+    <textarea id="logBox" class="log-box" readonly></textarea>
+</div>
+
+<div class="footer">BIT WenCui Embodied Navigation System</div>
+
+</body>
+</html>
