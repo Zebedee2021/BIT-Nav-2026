@@ -60,12 +60,12 @@ class OrientationNavigator:
         (292.5, 337.5, Direction.NORTHWEST),
     ]
     
-    def __init__(self, pixel_to_meter: float = 0.1):
+    def __init__(self, pixel_to_meter: float = 0.06):
         """
         初始化导航器
         
         Args:
-            pixel_to_meter: 像素到米的转换比例（默认0.1米/像素）
+            pixel_to_meter: 像素到米的转换比例（默认0.06米/像素, 3000px≈180m）
         """
         self.pixel_to_meter = pixel_to_meter
         self.user_heading = 0  # 用户当前朝向（0为北）

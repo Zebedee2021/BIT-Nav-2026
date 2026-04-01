@@ -24,21 +24,97 @@ CHINESE_FONT = fm.FontProperties(fname=_chinese_font_path)
 
 
 class FloorplanVisualizer:
-    """楼层平面图可视化器"""
+    """楼层平面图可视化器（支持对齐坐标系）"""
     
-    def __init__(self, floorplan_urls_path: str):
+    def __init__(self, floorplan_urls_path: str, building_data_path: str = None, 
+                 use_aligned: bool = True, align_params_path: str = None):
         """
         初始化可视化器
         
         Args:
             floorplan_urls_path: floorplan_urls.json 文件路径
+            building_data_path: wencui_building.json 文件路径 (用于获取坐标参考尺寸)
+            use_aligned: 是否使用对齐后的楼层图和坐标
+            align_params_path: align_params.json 文件路径（对齐坐标转换参数）
         """
+        self.use_aligned = use_aligned
+        self.align_params = {}
+        self.aligned_size = (1400, 1000)  # 对齐后的统一尺寸
+        
         with open(floorplan_urls_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
         
         self.floorplans = data.get("floorplans", {})
         self.coordinate_mapping = data.get("coordinate_mapping", {})
         self.cache = {}  # 图片缓存
+        
+        # 加载对齐坐标转换参数
+        if use_aligned and align_params_path and os.path.exists(align_params_path):
+            with open(align_params_path, 'r', encoding='utf-8') as f:
+                self.align_params = json.load(f)
+            print(f"已加载对齐坐标转换参数: {len(self.align_params)} 个楼层")
+        
+        # 加载楼层坐标参考尺寸
+        self.floor_ref_sizes = {}
+        if building_data_path and os.path.exists(building_data_path):
+            with open(building_data_path, 'r', encoding='utf-8') as f:
+                bdata = json.load(f)
+            for floor, layout in bdata.get("floor_layouts", {}).items():
+                self.floor_ref_sizes[floor] = (layout.get("width", 1400), layout.get("height", 1000))
+    
+    def _get_ref_size(self, floor: str) -> tuple:
+        """获取楼层的坐标参考尺寸"""
+        if self.use_aligned and floor in self.align_params:
+            return self.aligned_size
+        return self.floor_ref_sizes.get(floor, (1400, 1000))
+    
+    def _transform_to_aligned(self, floor: str, x: float, y: float) -> Tuple[float, float]:
+        """
+        将原始坐标转换为对齐后的坐标
+        
+        Args:
+            floor: 楼层标识
+            x, y: 原始坐标
+            
+        Returns:
+            对齐后的坐标 (x', y')
+        """
+        if not self.use_aligned or floor not in self.align_params:
+            return (x, y)
+        
+        params = self.align_params[floor]
+        scale = params["scale"]
+        offset_x, offset_y = params["offset"]
+        
+        # 缩放 -> 平移
+        x_aligned = x * scale + offset_x
+        y_aligned = y * scale + offset_y
+        
+        return (x_aligned, y_aligned)
+    
+    def _transform_from_aligned(self, floor: str, x_aligned: float, y_aligned: float) -> Tuple[float, float]:
+        """
+        将对齐后的坐标转换回原始坐标
+        
+        Args:
+            floor: 楼层标识
+            x_aligned, y_aligned: 对齐后的坐标
+            
+        Returns:
+            原始坐标 (x, y)
+        """
+        if not self.use_aligned or floor not in self.align_params:
+            return (x_aligned, y_aligned)
+        
+        params = self.align_params[floor]
+        scale = params["scale"]
+        offset_x, offset_y = params["offset"]
+        
+        # 逆向转换
+        x = (x_aligned - offset_x) / scale
+        y = (y_aligned - offset_y) / scale
+        
+        return (x, y)
     
     def get_floorplan_url(self, floor: str) -> Optional[str]:
         """获取楼层平面图的URL"""
@@ -93,15 +169,22 @@ class FloorplanVisualizer:
     
     def _get_local_floorplan_path(self, floor: str) -> Optional[str]:
         """获取本地楼层图路径"""
-        # 假设本地图片存放在 data/floorplans/ 目录下
         base_dir = os.path.dirname(os.path.dirname(__file__))
         
-        # 优先使用官方下载的图片
+        # 如果启用对齐，优先使用对齐后的图片
+        if self.use_aligned:
+            aligned_path = os.path.join(
+                base_dir, "data", "floorplans_aligned", f"{floor}_aligned.jpg"
+            )
+            if os.path.exists(aligned_path):
+                return aligned_path
+        
+        # 其次使用官方下载的原始图片
         official_path = os.path.join(base_dir, "data", "floorplans", f"{floor}_official.jpg")
         if os.path.exists(official_path):
             return official_path
         
-        # 其次使用生成的示例图
+        # 最后使用生成的示例图
         possible_paths = [
             os.path.join(base_dir, "data", "floorplans", f"{floor}.jpg"),
             os.path.join(base_dir, "data", "floorplans", f"{floor}.png"),
@@ -119,7 +202,8 @@ class FloorplanVisualizer:
         floor: str,
         path_nodes: List[Tuple[float, float]],
         node_labels: Optional[List[str]] = None,
-        output_size: Tuple[int, int] = (800, 600)
+        output_size: Tuple[int, int] = (800, 600),
+        use_aligned_coords: bool = False
     ) -> Optional[Image.Image]:
         """
         在楼层平面图上绘制路径
@@ -127,8 +211,10 @@ class FloorplanVisualizer:
         Args:
             floor: 楼层标识
             path_nodes: 路径节点坐标列表 [(x1,y1), (x2,y2), ...]
+                       如果 use_aligned_coords=True，则传入的是原始坐标，会自动转换
             node_labels: 节点标签列表
             output_size: 输出图片尺寸
+            use_aligned_coords: 传入的坐标是否为原始坐标（需要转换）
         
         Returns:
             带路径的Image对象
@@ -149,14 +235,20 @@ class FloorplanVisualizer:
             return img
         
         # 将逻辑坐标映射到图片坐标
-        # 注意：这里使用简化的线性映射，实际应该使用坐标映射表
         img_width, img_height = output_size
+        ref_w, ref_h = self._get_ref_size(floor)
         mapped_points = []
         
         for point in path_nodes:
-            # 简化的映射：假设逻辑坐标范围是 0-200
-            x = (point[0] / 200) * img_width
-            y = (point[1] / 200) * img_height
+            # 如果需要，先转换为对齐坐标
+            if use_aligned_coords and self.use_aligned:
+                x_aligned, y_aligned = self._transform_to_aligned(floor, point[0], point[1])
+            else:
+                x_aligned, y_aligned = point[0], point[1]
+            
+            # 再映射到图片坐标
+            x = (x_aligned / ref_w) * img_width
+            y = (y_aligned / ref_h) * img_height
             mapped_points.append((x, y))
         
         # 绘制路径线
@@ -225,7 +317,8 @@ class FloorplanVisualizer:
         self,
         floor: str,
         path_nodes: Optional[List[Tuple[float, float]]] = None,
-        title: Optional[str] = None
+        title: Optional[str] = None,
+        use_standardized_coords: bool = False
     ) -> plt.Figure:
         """
         使用matplotlib创建可视化（适合Streamlit）
@@ -234,6 +327,7 @@ class FloorplanVisualizer:
             floor: 楼层标识
             path_nodes: 路径节点坐标
             title: 图表标题
+            use_standardized_coords: 传入的坐标是否为原始坐标（需要转换）
         
         Returns:
             matplotlib Figure对象
@@ -260,8 +354,21 @@ class FloorplanVisualizer:
         if path_nodes and img:
             # 坐标映射
             img_width, img_height = img.size
-            mapped_x = [(p[0] / 200) * img_width for p in path_nodes]
-            mapped_y = [(p[1] / 200) * img_height for p in path_nodes]
+            ref_w, ref_h = self._get_ref_size(floor)
+            
+            mapped_x = []
+            mapped_y = []
+            
+            for point in path_nodes:
+                # 如果需要，先转换为对齐坐标
+                if use_standardized_coords and self.use_aligned:
+                    x_aligned, y_aligned = self._transform_to_aligned(floor, point[0], point[1])
+                else:
+                    x_aligned, y_aligned = point[0], point[1]
+                
+                # 再映射到图片坐标
+                mapped_x.append((x_aligned / ref_w) * img_width)
+                mapped_y.append((y_aligned / ref_h) * img_height)
             
             # 绘制路径线
             ax.plot(mapped_x, mapped_y, 'r-', linewidth=3, alpha=0.8, label='导航路径')
@@ -312,19 +419,36 @@ class FloorplanVisualizer:
 
 
 # 便捷函数
-def create_visualizer(data_dir: str = "../data") -> FloorplanVisualizer:
+def create_visualizer(
+    data_dir: str = "../data",
+    use_aligned: bool = True
+) -> FloorplanVisualizer:
     """
     创建可视化器实例
     
     Args:
         data_dir: 数据目录路径
+        use_aligned: 是否使用对齐楼层图和坐标
     
     Returns:
         FloorplanVisualizer实例
     """
     import os
     floorplan_path = os.path.join(data_dir, "floorplans", "floorplan_urls.json")
-    return FloorplanVisualizer(floorplan_path)
+    building_path = os.path.join(data_dir, "wencui_building_aligned_fixed.json")
+    
+    align_params_path = None
+    if use_aligned:
+        align_params_path = os.path.join(
+            data_dir, "floorplans_aligned", "align_params.json"
+        )
+    
+    return FloorplanVisualizer(
+        floorplan_path,
+        building_path,
+        use_aligned=use_aligned,
+        align_params_path=align_params_path
+    )
 
 
 # 测试代码
@@ -332,26 +456,67 @@ if __name__ == "__main__":
     import sys
     import os
     
-    # 测试
-    viz = create_visualizer()
+    # 测试（使用对齐坐标）
+    print("=" * 50)
+    print("楼层平面图可视化器测试（对齐坐标版）")
+    print("=" * 50)
     
-    print("可用楼层:")
+    viz = create_visualizer(use_aligned=True)
+    
+    print("\n可用楼层:")
     for floor in viz.get_all_floors():
         info = viz.get_floorplan_info(floor)
         print(f"  {floor}: {info['name']} - {info['description']}")
     
     # 测试加载4F楼层图
-    print("\n加载4F楼层图...")
+    print("\n加载4F楼层图（使用对齐图片）...")
     img = viz.load_floorplan("4F")
     if img:
         print(f"  成功加载: {img.size}")
+        print(f"  参考尺寸: {viz._get_ref_size('4F')}")
         
-        # 测试路径绘制
-        test_path = [(100, 20), (100, 60), (50, 60), (50, 100), (120, 100), (120, 80)]
-        result_img = viz.draw_path_on_floorplan("4F", test_path)
+        # 测试坐标转换
+        print("\n测试坐标转换（4F）:")
+        # D402 的原始坐标
+        original_coords = (2270, 420)
+        aligned_coords = viz._transform_to_aligned("4F", *original_coords)
+        print(f"  原始坐标 {original_coords} -> 对齐坐标 {aligned_coords}")
+        
+        # 反向转换
+        back_coords = viz._transform_from_aligned("4F", *aligned_coords)
+        print(f"  对齐坐标 {aligned_coords} -> 原始坐标 {back_coords}")
+        
+        # 测试路径绘制（使用原始坐标，自动转换）
+        # D402 附近的一些示例路径点（原始坐标系）
+        test_path_original = [
+            (2000, 400),   # 某点
+            (2100, 400),   # 某点
+            (2200, 420),   # 某点
+            (2270, 420),   # D402
+        ]
+        
+        print("\n测试路径绘制（原始坐标自动转换）...")
+        result_img = viz.draw_path_on_floorplan(
+            "4F", 
+            test_path_original,
+            use_aligned_coords=True
+        )
         
         if result_img:
             result_img.save("test_floorplan_with_path.png")
             print("  已保存测试图片: test_floorplan_with_path.png")
+        
+        # 测试 matplotlib 可视化
+        print("\n测试 Matplotlib 可视化...")
+        fig = viz.create_matplotlib_visualization(
+            "4F",
+            test_path_original,
+            title="4F 测试路径（对齐坐标）",
+            use_standardized_coords=True
+        )
+        fig.savefig("test_matplotlib_viz.png", dpi=150, bbox_inches='tight')
+        print("  已保存: test_matplotlib_viz.png")
+        plt.close(fig)
+        
     else:
         print("  加载失败")

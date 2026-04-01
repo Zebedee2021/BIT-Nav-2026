@@ -16,6 +16,7 @@ class Node:
     id: str
     type: str
     floor: str
+    zone: str
     name: str
     description: str
     x: float
@@ -46,6 +47,7 @@ class BuildingGraph:
                 id=node_id,
                 type=node_data.get("type", "unknown"),
                 floor=node_data.get("floor", "1F"),
+                zone=node_data.get("zone", ""),
                 name=node_data.get("name", node_id),
                 description=node_data.get("description", ""),
                 x=node_data.get("x", 0),
@@ -95,9 +97,9 @@ class AStarPathfinder:
         dy = node1.y - node2.y
         euclidean = math.sqrt(dx * dx + dy * dy)
         
-        # 楼层差异惩罚
+        # 楼层差异惩罚（基于 1400px 坐标空间调整）
         floor_diff = self._floor_distance(node1.floor, node2.floor)
-        floor_penalty = floor_diff * 50  # 每层惩罚50单位
+        floor_penalty = floor_diff * 350  # 调整为 350 (约 1/4 的坐标空间)
         
         return euclidean + floor_penalty
     
@@ -137,10 +139,10 @@ class AStarPathfinder:
         
         multiplier = type_costs.get(to_node.type, 1.0)
         
-        # 如果跨楼层，增加额外代价
+        # 如果跨楼层，增加额外代价（基于 1400px 坐标空间调整）
         if from_node.floor != to_node.floor:
             floor_diff = self._floor_distance(from_node.floor, to_node.floor)
-            distance += floor_diff * 30
+            distance += floor_diff * 200  # 调整为 200 (约 1/7 的坐标空间)
         
         return distance * multiplier
     
@@ -210,6 +212,63 @@ class AStarPathfinder:
             path.append(current)
         path.reverse()
         return path
+    
+    def calculate_path_distance(self, path: List[str]) -> float:
+        """
+        计算路径的总距离
+        
+        Args:
+            path: 路径节点ID列表
+            
+        Returns:
+            总距离（像素单位）
+        """
+        if not path or len(path) < 2:
+            return 0.0
+        
+        total_distance = 0.0
+        for i in range(len(path) - 1):
+            total_distance += self.edge_cost(path[i], path[i + 1])
+        
+        return total_distance
+    
+    def get_path_details(self, path: List[str]) -> List[dict]:
+        """
+        获取路径详细信息
+        
+        Args:
+            path: 路径节点ID列表
+            
+        Returns:
+            每段路径的详细信息列表
+        """
+        if not path or len(path) < 2:
+            return []
+        
+        details = []
+        for i in range(len(path) - 1):
+            from_id = path[i]
+            to_id = path[i + 1]
+            
+            from_node = self.graph.get_node(from_id)
+            to_node = self.graph.get_node(to_id)
+            
+            if not from_node or not to_node:
+                continue
+            
+            distance = self.edge_cost(from_id, to_id)
+            
+            details.append({
+                "step": i + 1,
+                "from": from_id,
+                "to": to_id,
+                "from_floor": from_node.floor,
+                "to_floor": to_node.floor,
+                "distance": distance,
+                "action": "elevator" if "elevator" in to_id else "stairs" if "stairs" in to_id else "walk"
+            })
+        
+        return details
 
 
 class NavigationGuide:

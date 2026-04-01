@@ -60,8 +60,8 @@ def load_system():
     """加载导航系统组件"""
     base_dir = os.path.dirname(__file__)
     
-    # 加载建筑图
-    with open(os.path.join(base_dir, 'data', 'wencui_building.json'), 'r', encoding='utf-8') as f:
+    # 加载建筑图（使用对齐并修复后的坐标文件）
+    with open(os.path.join(base_dir, 'data', 'wencui_building_aligned_fixed.json'), 'r', encoding='utf-8') as f:
         building_data = json.load(f)
     graph = BuildingGraph(building_data)
     
@@ -74,8 +74,13 @@ def load_system():
     pathfinder = AStarPathfinder(graph)
     guide = NavigationGuide(graph)
     
-    # 初始化楼层图可视化器
-    visualizer = FloorplanVisualizer(os.path.join(base_dir, 'data', 'floorplans', 'floorplan_urls.json'))
+    # 初始化楼层图可视化器（使用对齐后的图片和坐标）
+    visualizer = FloorplanVisualizer(
+        os.path.join(base_dir, 'data', 'floorplans', 'floorplan_urls.json'),
+        building_data_path=os.path.join(base_dir, 'data', 'wencui_building_aligned.json'),
+        use_aligned=True,
+        align_params_path=os.path.join(base_dir, 'data', 'floorplans_aligned', 'align_params.json')
+    )
     
     # 初始化方位导航器
     orientation_navigator = OrientationNavigator()
@@ -199,27 +204,64 @@ def main():
     
     # 获取可选节点（仅房间和入口，排除走廊/楼梯/电梯等内部节点）
     selectable_nodes = [n for n in graph.nodes.values() if n.type in ('room', 'entrance')]
-    selectable_nodes.sort(key=lambda n: (int(n.floor.replace('F', '')), n.id))
+    
+    # 构建三级索引: zone -> floor -> [(node_id, display_name)]
+    from collections import defaultdict
+    zone_floor_rooms = defaultdict(lambda: defaultdict(list))
+    for n in selectable_nodes:
+        zone_floor_rooms[n.zone][n.floor].append((n.id, n.name))
+    # 排序：各层房间按 id 排序
+    for zone in zone_floor_rooms:
+        for floor in zone_floor_rooms[zone]:
+            zone_floor_rooms[zone][floor].sort(key=lambda x: x[0])
+    
+    # 分区排序：A-M 字母序，CIRCULAR 放最后
+    ZONE_ORDER = [z for z in "ABCDEFGHIJKLM"] + ["CIRCULAR"]
+    available_zones = [z for z in ZONE_ORDER if z in zone_floor_rooms]
+    
+    # 分区显示名
+    ZONE_DISPLAY = {z: f"{z}区" for z in "ABCDEFGHIJKLM"}
+    ZONE_DISPLAY["CIRCULAR"] = "圆楼"
+    
+    def cascading_room_selector(key_prefix, label):
+        """三级联动选择器：分区 → 楼层 → 房间，返回选中的 node_id"""
+        st.sidebar.subheader(label)
+        
+        # 第一级：选分区
+        zone = st.sidebar.selectbox(
+            "分区:",
+            options=available_zones,
+            format_func=lambda z: ZONE_DISPLAY.get(z, z),
+            key=f"{key_prefix}_zone"
+        )
+        
+        # 第二级：选楼层（仅该分区有效楼层）
+        floors_in_zone = sorted(
+            zone_floor_rooms[zone].keys(),
+            key=lambda f: int(f.replace('F', ''))
+        )
+        floor = st.sidebar.selectbox(
+            "楼层:",
+            options=floors_in_zone,
+            key=f"{key_prefix}_floor"
+        )
+        
+        # 第三级：选房间（仅该分区+楼层的房间）
+        rooms = zone_floor_rooms[zone][floor]
+        room_id_to_name = {r[0]: r[1] for r in rooms}
+        node_id = st.sidebar.selectbox(
+            "房间:",
+            options=[r[0] for r in rooms],
+            format_func=lambda x: room_id_to_name[x],
+            key=f"{key_prefix}_room"
+        )
+        return node_id
     
     # 起点选择
-    st.sidebar.subheader("📍 起点")
-    start_options = [(n.id, f"{n.name} ({n.floor})") for n in selectable_nodes]
-    start_id_to_name = {opt[0]: opt[1] for opt in start_options}
-    start_node_id = st.sidebar.selectbox(
-        "选择起点:",
-        options=[opt[0] for opt in start_options],
-        format_func=lambda x: start_id_to_name[x],
-        index=0
-    )
+    start_node_id = cascading_room_selector("start", "📍 起点")
     
     # 终点选择
-    st.sidebar.subheader("🎯 终点")
-    target_node_id = st.sidebar.selectbox(
-        "选择终点:",
-        options=[opt[0] for opt in start_options],
-        format_func=lambda x: start_id_to_name[x],
-        index=min(1, len(start_options) - 1)
-    )
+    target_node_id = cascading_room_selector("end", "🎯 终点")
     
     # 语义搜索
     st.sidebar.markdown("---")
