@@ -57,12 +57,28 @@ st.markdown("""
 
 @st.cache_resource
 def load_system():
-    """加载导航系统组件"""
+    """加载导航系统组件 - 使用V7数据（修正楼层结构）"""
     base_dir = os.path.dirname(__file__)
     
-    # 加载建筑图（使用对齐并修复后的坐标文件）
-    with open(os.path.join(base_dir, 'data', 'wencui_building_aligned_fixed.json'), 'r', encoding='utf-8') as f:
+    # 加载建筑图（使用V7数据 - 修正B/M/G为2层，A为3-7层）
+    building_file = os.path.join(base_dir, 'data', 'wencui_building_v7.json')
+    if not os.path.exists(building_file):
+        # 如果V7文件不存在，使用V6文件
+        building_file = os.path.join(base_dir, 'data', 'wencui_building_v6.json')
+    
+    with open(building_file, 'r', encoding='utf-8') as f:
         building_data = json.load(f)
+    
+    # 统计数据源
+    total_nodes = len(building_data.get('nodes', {}))
+    ocr_nodes = sum(1 for n in building_data.get('nodes', {}).values() 
+                   if n.get('type') == 'room' and 'ocr_conf' in n)
+    predicted_nodes = sum(1 for n in building_data.get('nodes', {}).values() 
+                         if n.get('type') == 'room' and n.get('predicted'))
+    
+    print(f"[导航系统] 加载建筑数据: {building_file}")
+    print(f"[导航系统] 总节点: {total_nodes}, OCR识别: {ocr_nodes}, 算法预测: {predicted_nodes}")
+    
     graph = BuildingGraph(building_data)
     
     # 加载语义映射
@@ -74,16 +90,19 @@ def load_system():
     pathfinder = AStarPathfinder(graph)
     guide = NavigationGuide(graph)
     
-    # 初始化楼层图可视化器（使用对齐后的图片和坐标）
+    # 初始化楼层图可视化器（使用统一坐标系的高清楼层图）
     visualizer = FloorplanVisualizer(
-        os.path.join(base_dir, 'data', 'floorplans', 'floorplan_urls.json'),
-        building_data_path=os.path.join(base_dir, 'data', 'wencui_building_aligned.json'),
+        os.path.join(base_dir, 'data', 'floorplans_unified', 'unified_params.json'),
+        building_data_path=building_file,
         use_aligned=True,
         align_params_path=os.path.join(base_dir, 'data', 'floorplans_aligned', 'align_params.json')
     )
     
-    # 初始化方位导航器
-    orientation_navigator = OrientationNavigator()
+    # 初始化方位导航器（使用高清楼层图朝向：上南下北、左西右东）
+    orientation_navigator = OrientationNavigator(
+        pixel_to_meter=0.0667,  # 15px/m 的倒数，约 0.0667 米/像素
+        floorplan_orientation='hires'  # 高清楼层图朝向
+    )
     regional_adapter = RegionalAdapter(region="universal")
     
     # 初始化 LLM 导航服务
@@ -260,6 +279,41 @@ def main():
     # 起点选择
     start_node_id = cascading_room_selector("start", "📍 起点")
     
+    # 显示起点位置地图（当选择起点后）
+    if start_node_id and visualizer:
+        start_node = graph.get_node(start_node_id)
+        if start_node:
+            st.markdown("---")
+            col_map, col_info = st.columns([2, 1])
+            
+            with col_map:
+                st.subheader(f"📍 起点位置: {start_node.name}")
+                # 获取起点坐标（优先使用 ux/uy）
+                ux = start_node.ux if start_node.ux != 0.0 else start_node.x
+                uy = start_node.uy if start_node.uy != 0.0 else start_node.y
+                
+                # 创建带标记的楼层图
+                fig = visualizer.create_matplotlib_visualization(
+                    start_node.floor,
+                    path_nodes=[(ux, uy)],
+                    title=f"{start_node.floor} - {start_node.name}",
+                    highlight_node=(ux, uy)
+                )
+                if fig:
+                    st.pyplot(fig)
+                    plt.close(fig)
+            
+            with col_info:
+                st.markdown("**起点信息**")
+                st.markdown(f"- **名称**: {start_node.name}")
+                st.markdown(f"- **楼层**: {start_node.floor}")
+                st.markdown(f"- **区域**: {start_node.zone}")
+                if start_node.description:
+                    st.markdown(f"- **描述**: {start_node.description}")
+                
+                # 显示坐标
+                st.caption(f"坐标: ux={ux:.0f}, uy={uy:.0f}")
+    
     # 终点选择
     target_node_id = cascading_room_selector("end", "🎯 终点")
     
@@ -393,13 +447,16 @@ def main():
             st.markdown(f"**{start_node.name}** ({start_node.floor}) → **{end_node.name}** ({end_node.floor})")
             st.markdown("---")
             
-            # 生成统一步骤数据
+            # 生成统一步骤数据 (使用统一校正图坐标 ux/uy)
             path_coords = []
             path_names = []
             for node_id in path:
                 node = graph.get_node(node_id)
                 if node:
-                    path_coords.append((node.x, node.y))
+                    # 优先使用统一校正图坐标，如果没有则使用原始坐标
+                    ux = node.ux if node.ux != 0.0 else node.x
+                    uy = node.uy if node.uy != 0.0 else node.y
+                    path_coords.append((ux, uy))
                     path_names.append(node.name)
             
             orientation_instructions = orientation_navigator.generate_path_directions(

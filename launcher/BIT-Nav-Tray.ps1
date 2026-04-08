@@ -1,4 +1,4 @@
-# BIT-Nav Tray Manager v2
+# BIT-Nav Tray Manager v3 - Optimized
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
@@ -8,6 +8,10 @@ $script:ServicePort = 8501
 $script:ServiceUrl = "http://localhost:8501"
 $script:ProjectDir = Split-Path -Parent $PSScriptRoot
 $script:IsRunning = $false
+
+# ============================================
+# Utility Functions
+# ============================================
 
 # Find available port
 function Find-AvailablePort {
@@ -20,6 +24,79 @@ function Find-AvailablePort {
         }
     }
     return $null
+}
+
+# Find running service port
+function Find-RunningPort {
+    for ($p = 8501; $p -le 8510; $p++) {
+        $portStr = ":" + $p
+        $portCheck = netstat -ano | findstr $portStr | findstr "LISTENING"
+        if ($portCheck) {
+            return $p
+        }
+    }
+    return 0
+}
+
+# Open URL in browser (reliable method for GUI events)
+function Open-UrlInBrowser {
+    param([string]$Url)
+    
+    # Try to find a working browser
+    $browserPath = $null
+    
+    # 1. Try default browser from registry
+    try {
+        $browserCmd = (Get-ItemProperty -Path "Registry::HKEY_CLASSES_ROOT\http\shell\open\command" -Name "(Default)" -ErrorAction Stop)."(Default)"
+        
+        if ($browserCmd -match '"([^"]+)"') {
+            $regPath = $matches[1]
+        } else {
+            $regPath = ($browserCmd -split ' ')[0]
+        }
+        
+        # Verify it exists
+        if (Test-Path $regPath) {
+            $browserPath = $regPath
+        }
+    } catch {}
+    
+    # 2. If default browser not found or is 360 (uninstalled), try common browsers
+    if (-not $browserPath -or $browserPath -match "360") {
+        $commonBrowsers = @(
+            "${env:ProgramFiles}\Google\Chrome\Application\chrome.exe",
+            "${env:ProgramFiles(x86)}\Google\Chrome\Application\chrome.exe",
+            "${env:LOCALAPPDATA}\Google\Chrome\Application\chrome.exe",
+            "${env:ProgramFiles}\Microsoft\Edge\Application\msedge.exe",
+            "${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe"
+        )
+        
+        foreach ($path in $commonBrowsers) {
+            if (Test-Path $path) {
+                $browserPath = $path
+                break
+            }
+        }
+    }
+    
+    # 3. Launch browser if found
+    if ($browserPath) {
+        try {
+            Start-Process -FilePath $browserPath -ArgumentList $Url
+            return $true
+        } catch {
+            # Fall through to fallback
+        }
+    }
+    
+    # 4. Fallback: use cmd /c start
+    try {
+        Start-Process -FilePath "cmd.exe" -ArgumentList "/c", "start", "", $Url
+        return $true
+    } catch {
+        [System.Windows.Forms.MessageBox]::Show("Failed to open browser. Please manually navigate to: $Url", "BIT-Nav Error")
+        return $false
+    }
 }
 
 # Create form (hidden)
@@ -97,48 +174,15 @@ $stopItem.Add_Click({
 $openItem = New-Object System.Windows.Forms.ToolStripMenuItem
 $openItem.Text = "Open Page"
 $openItem.Add_Click({
-    # Find which port the service is running on
-    $foundPort = 0
-    for ($p = 8501; $p -le 8510; $p++) {
-        $portStr = ":" + $p
-        $portCheck = netstat -ano | findstr $portStr | findstr "LISTENING"
-        if ($portCheck) {
-            $foundPort = $p
-            break
-        }
-    }
+    $foundPort = Find-RunningPort
     
     if ($foundPort -eq 0) {
         [System.Windows.Forms.MessageBox]::Show("Service is not running. Please start the service first.", "BIT-Nav")
         return
     }
     
-    # Build URL and open browser
     [string]$url = "http://localhost:$foundPort"
-    
-    # Check if default browser is valid
-    try {
-        $browserCmd = (Get-ItemProperty -Path "Registry::HKEY_CLASSES_ROOT\http\shell\open\command" -Name "(Default)" -ErrorAction Stop)."(Default)"
-        if ($browserCmd -match '"([^"]+)"') {
-            $browserPath = $matches[1]
-        } else {
-            $browserPath = ($browserCmd -split ' ')[0]
-        }
-        # Verify browser executable exists
-        if (-not (Test-Path $browserPath)) {
-            [System.Windows.Forms.MessageBox]::Show("Default browser not found at: $browserPath`n`nPlease check your default browser settings or manually navigate to: $url", "BIT-Nav Warning")
-            return
-        }
-        # Open URL with verified browser
-        Start-Process -FilePath $browserPath -ArgumentList $url
-    } catch {
-        # Fallback to simple start command
-        try {
-            Start-Process -FilePath "cmd.exe" -ArgumentList "/c", "start", $url
-        } catch {
-            [System.Windows.Forms.MessageBox]::Show("Failed to open browser. Please manually navigate to: $url", "BIT-Nav Error")
-        }
-    }
+    Open-UrlInBrowser -Url $url | Out-Null
 })
 [void]$contextMenu.Items.Add($openItem)
 
@@ -165,16 +209,7 @@ $exitItem.Add_Click({
 
 $notifyIcon.ContextMenuStrip = $contextMenu
 $notifyIcon.Add_DoubleClick({
-    # Find which port the service is running on
-    $foundPort = 0
-    for ($p = 8501; $p -le 8510; $p++) {
-        $portStr = ":" + $p
-        $portCheck = netstat -ano | findstr $portStr | findstr "LISTENING"
-        if ($portCheck) {
-            $foundPort = $p
-            break
-        }
-    }
+    $foundPort = Find-RunningPort
     
     if ($foundPort -eq 0) {
         [System.Windows.Forms.MessageBox]::Show("Service is not running. Please start the service first.", "BIT-Nav")
@@ -182,41 +217,14 @@ $notifyIcon.Add_DoubleClick({
     }
     
     [string]$url = "http://localhost:$foundPort"
-    try {
-        $browserCmd = (Get-ItemProperty -Path "Registry::HKEY_CLASSES_ROOT\http\shell\open\command" -Name "(Default)" -ErrorAction Stop)."(Default)"
-        if ($browserCmd -match '"([^"]+)"') {
-            $browserPath = $matches[1]
-        } else {
-            $browserPath = ($browserCmd -split ' ')[0]
-        }
-        if (-not (Test-Path $browserPath)) {
-            [System.Windows.Forms.MessageBox]::Show("Default browser not found: $browserPath`n`nPlease check your default browser settings.", "BIT-Nav Warning")
-            return
-        }
-        Start-Process -FilePath $browserPath -ArgumentList $url
-    } catch {
-        try {
-            Start-Process -FilePath "cmd.exe" -ArgumentList "/c", "start", $url
-        } catch {
-            [System.Windows.Forms.MessageBox]::Show("Failed to open browser. Please manually navigate to: $url", "BIT-Nav Error")
-        }
-    }
+    Open-UrlInBrowser -Url $url | Out-Null
 })
 
 # Check status - scan all possible ports
 function Check-Status {
-    $foundPort = $null
-    # Scan ports 8501-8510 to find running service
-    for ($p = 8501; $p -le 8510; $p++) {
-        $portStr = ":" + $p
-        $portCheck = netstat -ano | findstr $portStr | findstr "LISTENING"
-        if ($portCheck) {
-            $foundPort = $p
-            break
-        }
-    }
+    $foundPort = Find-RunningPort
     
-    if ($foundPort) {
+    if ($foundPort -ne 0) {
         $script:ServicePort = $foundPort
         $script:IsRunning = $true
         $statusItem.Text = "Running on port " + $foundPort

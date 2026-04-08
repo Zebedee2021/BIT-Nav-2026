@@ -19,12 +19,16 @@ class Node:
     zone: str
     name: str
     description: str
-    x: float
-    y: float
-    
+    x: float        # 原始像素坐标
+    y: float        # 原始像素坐标
+    ux: float = 0.0  # 统一校正图坐标 X (对应东西方向)
+    uy: float = 0.0  # 统一校正图坐标 Y (对应南北方向)
+    east_m: float = 0.0   # 距报告厅中心向东的米数
+    south_m: float = 0.0  # 距报告厅中心向南的米数
+
     def __hash__(self):
         return hash(self.id)
-    
+
     def __eq__(self, other):
         return self.id == other.id
 
@@ -51,7 +55,11 @@ class BuildingGraph:
                 name=node_data.get("name", node_id),
                 description=node_data.get("description", ""),
                 x=node_data.get("x", 0),
-                y=node_data.get("y", 0)
+                y=node_data.get("y", 0),
+                ux=node_data.get("ux", 0.0),
+                uy=node_data.get("uy", 0.0),
+                east_m=node_data.get("east_m", 0.0),
+                south_m=node_data.get("south_m", 0.0),
             )
         
         # 加载边
@@ -92,15 +100,15 @@ class AStarPathfinder:
         if not node1 or not node2:
             return float('inf')
         
-        # 欧几里得距离
-        dx = node1.x - node2.x
-        dy = node1.y - node2.y
+        # 欧几里得距离（米制，east_m/south_m 来自 v5 统一坐标系）
+        dx = node1.east_m - node2.east_m
+        dy = node1.south_m - node2.south_m
         euclidean = math.sqrt(dx * dx + dy * dy)
-        
-        # 楼层差异惩罚（基于 1400px 坐标空间调整）
+
+        # 楼层差异惩罚：每层按 5 m 计（换乘楼梯/电梯的等效步行距离）
         floor_diff = self._floor_distance(node1.floor, node2.floor)
-        floor_penalty = floor_diff * 350  # 调整为 350 (约 1/4 的坐标空间)
-        
+        floor_penalty = floor_diff * 5.0
+
         return euclidean + floor_penalty
     
     def _floor_distance(self, floor1: str, floor2: str) -> int:
@@ -123,9 +131,9 @@ class AStarPathfinder:
         if not from_node or not to_node:
             return float('inf')
         
-        # 基础距离
-        dx = from_node.x - to_node.x
-        dy = from_node.y - to_node.y
+        # 基础距离（米制）
+        dx = from_node.east_m - to_node.east_m
+        dy = from_node.south_m - to_node.south_m
         distance = math.sqrt(dx * dx + dy * dy)
         
         # 根据节点类型调整代价
@@ -364,7 +372,7 @@ def load_building_data(filepath: str) -> dict:
 # 测试代码
 if __name__ == "__main__":
     # 加载数据
-    data = load_building_data("../data/wencui_building.json")
+    data = load_building_data("../data/wencui_building_v5_predicted_v2.json")
     
     # 构建图
     graph = BuildingGraph(data)

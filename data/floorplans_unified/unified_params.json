@@ -1,0 +1,58 @@
+{
+  "description": "文萃楼平面图统一校正坐标系",
+  "orientation": "上北下南，左西右东（标准地图朝向）",
+  "origin": "圆形报告厅/圆楼中心",
+  "origin_gps": {
+    "lat": 39.731302,
+    "lon": 116.167223
+  },
+  "output_size_px": {
+    "width": 745,
+    "height": 1304
+  },
+  "scale": {
+    "px_per_m": 5,
+    "m_per_px": 0.2
+  },
+  "hall_pixel": {
+    "x": 164,
+    "y": 610
+  },
+  "axes": {
+    "x": "向右 = 向东（正值）",
+    "y": "向下 = 向南（正值，与标准地图一致）"
+  },
+  "formulas": {
+    "x_east_m": "(pixel_x - 164) * 0.2",
+    "y_south_m": "(pixel_y - 610) * 0.2",
+    "pixel_x": "x_east_m / 0.2 + 164",
+    "pixel_y": "y_south_m / 0.2 + 610"
+  },
+  "crop_original_3000x2000": [
+    76,
+    100,
+    2841,
+    1820
+  ],
+  "transform_sequence": [
+    "1. crop (76, 100, 2841, 1820)",
+    "2. PIL ROTATE_270 (顺时针 90°) → 上北下南",
+    "3. resize to 745×1304 (LANCZOS)"
+  ],
+  "building_bounds": {
+    "real_ew_m": 149.0,
+    "real_ns_m": 260.9
+  },
+  "failed_floors": [
+    "1F",
+    "2F",
+    "3F",
+    "4F",
+    "5F",
+    "6F",
+    "7F",
+    "8F",
+    "9F",
+    "10F"
+  ]
+}

@@ -1,0 +1,906 @@
+{
+  "zone": "J",
+  "node_count": 90,
+  "nodes": {
+    "J-101": {
+      "id": "J-101",
+      "type": "room",
+      "floor": "1F",
+      "zone": "J",
+      "name": "J-101",
+      "description": "1F J区房间",
+      "x": 250,
+      "y": 1450
+    },
+    "J-102": {
+      "id": "J-102",
+      "type": "room",
+      "floor": "1F",
+      "zone": "J",
+      "name": "J-102",
+      "description": "1F J区房间",
+      "x": 250,
+      "y": 1570
+    },
+    "J-103": {
+      "id": "J-103",
+      "type": "room",
+      "floor": "1F",
+      "zone": "J",
+      "name": "J-103",
+      "description": "1F J区房间",
+      "x": 250,
+      "y": 1690
+    },
+    "J-104": {
+      "id": "J-104",
+      "type": "room",
+      "floor": "1F",
+      "zone": "J",
+      "name": "J-104",
+      "description": "1F J区房间",
+      "x": 330,
+      "y": 1450
+    },
+    "J-105": {
+      "id": "J-105",
+      "type": "room",
+      "floor": "1F",
+      "zone": "J",
+      "name": "J-105",
+      "description": "1F J区房间",
+      "x": 330,
+      "y": 1570
+    },
+    "J-106": {
+      "id": "J-106",
+      "type": "room",
+      "floor": "1F",
+      "zone": "J",
+      "name": "J-106",
+      "description": "1F J区房间",
+      "x": 330,
+      "y": 1690
+    },
+    "J-107": {
+      "id": "J-107",
+      "type": "room",
+      "floor": "1F",
+      "zone": "J",
+      "name": "J-107",
+      "description": "1F J区房间",
+      "x": 410,
+      "y": 1450
+    },
+    "J-108": {
+      "id": "J-108",
+      "type": "room",
+      "floor": "1F",
+      "zone": "J",
+      "name": "J-108",
+      "description": "1F J区房间",
+      "x": 410,
+      "y": 1570
+    },
+    "J-109": {
+      "id": "J-109",
+      "type": "room",
+      "floor": "1F",
+      "zone": "J",
+      "name": "J-109",
+      "description": "1F J区房间",
+      "x": 410,
+      "y": 1690
+    },
+    "J-201": {
+      "id": "J-201",
+      "type": "room",
+      "floor": "2F",
+      "zone": "J",
+      "name": "J-201",
+      "description": "2F J区房间",
+      "x": 250,
+      "y": 1450
+    },
+    "J-202": {
+      "id": "J-202",
+      "type": "room",
+      "floor": "2F",
+      "zone": "J",
+      "name": "J-202",
+      "description": "2F J区房间",
+      "x": 250,
+      "y": 1570
+    },
+    "J-203": {
+      "id": "J-203",
+      "type": "room",
+      "floor": "2F",
+      "zone": "J",
+      "name": "J-203",
+      "description": "2F J区房间",
+      "x": 250,
+      "y": 1690
+    },
+    "J-204": {
+      "id": "J-204",
+      "type": "room",
+      "floor": "2F",
+      "zone": "J",
+      "name": "J-204",
+      "description": "2F J区房间",
+      "x": 330,
+      "y": 1450
+    },
+    "J-205": {
+      "id": "J-205",
+      "type": "room",
+      "floor": "2F",
+      "zone": "J",
+      "name": "J-205",
+      "description": "2F J区房间",
+      "x": 330,
+      "y": 1570
+    },
+    "J-206": {
+      "id": "J-206",
+      "type": "room",
+      "floor": "2F",
+      "zone": "J",
+      "name": "J-206",
+      "description": "2F J区房间",
+      "x": 330,
+      "y": 1690
+    },
+    "J-207": {
+      "id": "J-207",
+      "type": "room",
+      "floor": "2F",
+      "zone": "J",
+      "name": "J-207",
+      "description": "2F J区房间",
+      "x": 410,
+      "y": 1450
+    },
+    "J-208": {
+      "id": "J-208",
+      "type": "room",
+      "floor": "2F",
+      "zone": "J",
+      "name": "J-208",
+      "description": "2F J区房间",
+      "x": 410,
+      "y": 1570
+    },
+    "J-209": {
+      "id": "J-209",
+      "type": "room",
+      "floor": "2F",
+      "zone": "J",
+      "name": "J-209",
+      "description": "2F J区房间",
+      "x": 410,
+      "y": 1690
+    },
+    "J-301": {
+      "id": "J-301",
+      "type": "room",
+      "floor": "3F",
+      "zone": "J",
+      "name": "J-301",
+      "description": "3F J区房间",
+      "x": 250,
+      "y": 1450
+    },
+    "J-302": {
+      "id": "J-302",
+      "type": "room",
+      "floor": "3F",
+      "zone": "J",
+      "name": "J-302",
+      "description": "3F J区房间",
+      "x": 250,
+      "y": 1570
+    },
+    "J-303": {
+      "id": "J-303",
+      "type": "room",
+      "floor": "3F",
+      "zone": "J",
+      "name": "J-303",
+      "description": "3F J区房间",
+      "x": 250,
+      "y": 1690
+    },
+    "J-304": {
+      "id": "J-304",
+      "type": "room",
+      "floor": "3F",
+      "zone": "J",
+      "name": "J-304",
+      "description": "3F J区房间",
+      "x": 330,
+      "y": 1450
+    },
+    "J-305": {
+      "id": "J-305",
+      "type": "room",
+      "floor": "3F",
+      "zone": "J",
+      "name": "J-305",
+      "description": "3F J区房间",
+      "x": 330,
+      "y": 1570
+    },
+    "J-306": {
+      "id": "J-306",
+      "type": "room",
+      "floor": "3F",
+      "zone": "J",
+      "name": "J-306",
+      "description": "3F J区房间",
+      "x": 330,
+      "y": 1690
+    },
+    "J-307": {
+      "id": "J-307",
+      "type": "room",
+      "floor": "3F",
+      "zone": "J",
+      "name": "J-307",
+      "description": "3F J区房间",
+      "x": 410,
+      "y": 1450
+    },
+    "J-308": {
+      "id": "J-308",
+      "type": "room",
+      "floor": "3F",
+      "zone": "J",
+      "name": "J-308",
+      "description": "3F J区房间",
+      "x": 410,
+      "y": 1570
+    },
+    "J-309": {
+      "id": "J-309",
+      "type": "room",
+      "floor": "3F",
+      "zone": "J",
+      "name": "J-309",
+      "description": "3F J区房间",
+      "x": 410,
+      "y": 1690
+    },
+    "J-401": {
+      "id": "J-401",
+      "type": "room",
+      "floor": "4F",
+      "zone": "J",
+      "name": "J-401",
+      "description": "4F J区房间",
+      "x": 250,
+      "y": 1450
+    },
+    "J-402": {
+      "id": "J-402",
+      "type": "room",
+      "floor": "4F",
+      "zone": "J",
+      "name": "J-402",
+      "description": "4F J区房间",
+      "x": 250,
+      "y": 1570
+    },
+    "J-403": {
+      "id": "J-403",
+      "type": "room",
+      "floor": "4F",
+      "zone": "J",
+      "name": "J-403",
+      "description": "4F J区房间",
+      "x": 250,
+      "y": 1690
+    },
+    "J-404": {
+      "id": "J-404",
+      "type": "room",
+      "floor": "4F",
+      "zone": "J",
+      "name": "J-404",
+      "description": "4F J区房间",
+      "x": 330,
+      "y": 1450
+    },
+    "J-405": {
+      "id": "J-405",
+      "type": "room",
+      "floor": "4F",
+      "zone": "J",
+      "name": "J-405",
+      "description": "4F J区房间",
+      "x": 330,
+      "y": 1570
+    },
+    "J-406": {
+      "id": "J-406",
+      "type": "room",
+      "floor": "4F",
+      "zone": "J",
+      "name": "J-406",
+      "description": "4F J区房间",
+      "x": 330,
+      "y": 1690
+    },
+    "J-407": {
+      "id": "J-407",
+      "type": "room",
+      "floor": "4F",
+      "zone": "J",
+      "name": "J-407",
+      "description": "4F J区房间",
+      "x": 410,
+      "y": 1450
+    },
+    "J-408": {
+      "id": "J-408",
+      "type": "room",
+      "floor": "4F",
+      "zone": "J",
+      "name": "J-408",
+      "description": "4F J区房间",
+      "x": 410,
+      "y": 1570
+    },
+    "J-409": {
+      "id": "J-409",
+      "type": "room",
+      "floor": "4F",
+      "zone": "J",
+      "name": "J-409",
+      "description": "4F J区房间",
+      "x": 410,
+      "y": 1690
+    },
+    "J-501": {
+      "id": "J-501",
+      "type": "room",
+      "floor": "5F",
+      "zone": "J",
+      "name": "J-501",
+      "description": "5F J区房间",
+      "x": 250,
+      "y": 1450
+    },
+    "J-502": {
+      "id": "J-502",
+      "type": "room",
+      "floor": "5F",
+      "zone": "J",
+      "name": "J-502",
+      "description": "5F J区房间",
+      "x": 250,
+      "y": 1570
+    },
+    "J-503": {
+      "id": "J-503",
+      "type": "room",
+      "floor": "5F",
+      "zone": "J",
+      "name": "J-503",
+      "description": "5F J区房间",
+      "x": 250,
+      "y": 1690
+    },
+    "J-504": {
+      "id": "J-504",
+      "type": "room",
+      "floor": "5F",
+      "zone": "J",
+      "name": "J-504",
+      "description": "5F J区房间",
+      "x": 330,
+      "y": 1450
+    },
+    "J-505": {
+      "id": "J-505",
+      "type": "room",
+      "floor": "5F",
+      "zone": "J",
+      "name": "J-505",
+      "description": "5F J区房间",
+      "x": 330,
+      "y": 1570
+    },
+    "J-506": {
+      "id": "J-506",
+      "type": "room",
+      "floor": "5F",
+      "zone": "J",
+      "name": "J-506",
+      "description": "5F J区房间",
+      "x": 330,
+      "y": 1690
+    },
+    "J-507": {
+      "id": "J-507",
+      "type": "room",
+      "floor": "5F",
+      "zone": "J",
+      "name": "J-507",
+      "description": "5F J区房间",
+      "x": 410,
+      "y": 1450
+    },
+    "J-508": {
+      "id": "J-508",
+      "type": "room",
+      "floor": "5F",
+      "zone": "J",
+      "name": "J-508",
+      "description": "5F J区房间",
+      "x": 410,
+      "y": 1570
+    },
+    "J-509": {
+      "id": "J-509",
+      "type": "room",
+      "floor": "5F",
+      "zone": "J",
+      "name": "J-509",
+      "description": "5F J区房间",
+      "x": 410,
+      "y": 1690
+    },
+    "J-601": {
+      "id": "J-601",
+      "type": "room",
+      "floor": "6F",
+      "zone": "J",
+      "name": "J-601",
+      "description": "6F J区房间",
+      "x": 250,
+      "y": 1450
+    },
+    "J-602": {
+      "id": "J-602",
+      "type": "room",
+      "floor": "6F",
+      "zone": "J",
+      "name": "J-602",
+      "description": "6F J区房间",
+      "x": 250,
+      "y": 1570
+    },
+    "J-603": {
+      "id": "J-603",
+      "type": "room",
+      "floor": "6F",
+      "zone": "J",
+      "name": "J-603",
+      "description": "6F J区房间",
+      "x": 250,
+      "y": 1690
+    },
+    "J-604": {
+      "id": "J-604",
+      "type": "room",
+      "floor": "6F",
+      "zone": "J",
+      "name": "J-604",
+      "description": "6F J区房间",
+      "x": 330,
+      "y": 1450
+    },
+    "J-605": {
+      "id": "J-605",
+      "type": "room",
+      "floor": "6F",
+      "zone": "J",
+      "name": "J-605",
+      "description": "6F J区房间",
+      "x": 330,
+      "y": 1570
+    },
+    "J-606": {
+      "id": "J-606",
+      "type": "room",
+      "floor": "6F",
+      "zone": "J",
+      "name": "J-606",
+      "description": "6F J区房间",
+      "x": 330,
+      "y": 1690
+    },
+    "J-607": {
+      "id": "J-607",
+      "type": "room",
+      "floor": "6F",
+      "zone": "J",
+      "name": "J-607",
+      "description": "6F J区房间",
+      "x": 410,
+      "y": 1450
+    },
+    "J-608": {
+      "id": "J-608",
+      "type": "room",
+      "floor": "6F",
+      "zone": "J",
+      "name": "J-608",
+      "description": "6F J区房间",
+      "x": 410,
+      "y": 1570
+    },
+    "J-609": {
+      "id": "J-609",
+      "type": "room",
+      "floor": "6F",
+      "zone": "J",
+      "name": "J-609",
+      "description": "6F J区房间",
+      "x": 410,
+      "y": 1690
+    },
+    "J-701": {
+      "id": "J-701",
+      "type": "room",
+      "floor": "7F",
+      "zone": "J",
+      "name": "J-701",
+      "description": "7F J区房间",
+      "x": 250,
+      "y": 1450
+    },
+    "J-702": {
+      "id": "J-702",
+      "type": "room",
+      "floor": "7F",
+      "zone": "J",
+      "name": "J-702",
+      "description": "7F J区房间",
+      "x": 250,
+      "y": 1570
+    },
+    "J-703": {
+      "id": "J-703",
+      "type": "room",
+      "floor": "7F",
+      "zone": "J",
+      "name": "J-703",
+      "description": "7F J区房间",
+      "x": 250,
+      "y": 1690
+    },
+    "J-704": {
+      "id": "J-704",
+      "type": "room",
+      "floor": "7F",
+      "zone": "J",
+      "name": "J-704",
+      "description": "7F J区房间",
+      "x": 330,
+      "y": 1450
+    },
+    "J-705": {
+      "id": "J-705",
+      "type": "room",
+      "floor": "7F",
+      "zone": "J",
+      "name": "J-705",
+      "description": "7F J区房间",
+      "x": 330,
+      "y": 1570
+    },
+    "J-706": {
+      "id": "J-706",
+      "type": "room",
+      "floor": "7F",
+      "zone": "J",
+      "name": "J-706",
+      "description": "7F J区房间",
+      "x": 330,
+      "y": 1690
+    },
+    "J-707": {
+      "id": "J-707",
+      "type": "room",
+      "floor": "7F",
+      "zone": "J",
+      "name": "J-707",
+      "description": "7F J区房间",
+      "x": 410,
+      "y": 1450
+    },
+    "J-708": {
+      "id": "J-708",
+      "type": "room",
+      "floor": "7F",
+      "zone": "J",
+      "name": "J-708",
+      "description": "7F J区房间",
+      "x": 410,
+      "y": 1570
+    },
+    "J-709": {
+      "id": "J-709",
+      "type": "room",
+      "floor": "7F",
+      "zone": "J",
+      "name": "J-709",
+      "description": "7F J区房间",
+      "x": 410,
+      "y": 1690
+    },
+    "J-801": {
+      "id": "J-801",
+      "type": "room",
+      "floor": "8F",
+      "zone": "J",
+      "name": "J-801",
+      "description": "8F J区房间",
+      "x": 250,
+      "y": 1450
+    },
+    "J-802": {
+      "id": "J-802",
+      "type": "room",
+      "floor": "8F",
+      "zone": "J",
+      "name": "J-802",
+      "description": "8F J区房间",
+      "x": 250,
+      "y": 1570
+    },
+    "J-803": {
+      "id": "J-803",
+      "type": "room",
+      "floor": "8F",
+      "zone": "J",
+      "name": "J-803",
+      "description": "8F J区房间",
+      "x": 250,
+      "y": 1690
+    },
+    "J-804": {
+      "id": "J-804",
+      "type": "room",
+      "floor": "8F",
+      "zone": "J",
+      "name": "J-804",
+      "description": "8F J区房间",
+      "x": 330,
+      "y": 1450
+    },
+    "J-805": {
+      "id": "J-805",
+      "type": "room",
+      "floor": "8F",
+      "zone": "J",
+      "name": "J-805",
+      "description": "8F J区房间",
+      "x": 330,
+      "y": 1570
+    },
+    "J-806": {
+      "id": "J-806",
+      "type": "room",
+      "floor": "8F",
+      "zone": "J",
+      "name": "J-806",
+      "description": "8F J区房间",
+      "x": 330,
+      "y": 1690
+    },
+    "J-807": {
+      "id": "J-807",
+      "type": "room",
+      "floor": "8F",
+      "zone": "J",
+      "name": "J-807",
+      "description": "8F J区房间",
+      "x": 410,
+      "y": 1450
+    },
+    "J-808": {
+      "id": "J-808",
+      "type": "room",
+      "floor": "8F",
+      "zone": "J",
+      "name": "J-808",
+      "description": "8F J区房间",
+      "x": 410,
+      "y": 1570
+    },
+    "J-809": {
+      "id": "J-809",
+      "type": "room",
+      "floor": "8F",
+      "zone": "J",
+      "name": "J-809",
+      "description": "8F J区房间",
+      "x": 410,
+      "y": 1690
+    },
+    "J-901": {
+      "id": "J-901",
+      "type": "room",
+      "floor": "9F",
+      "zone": "J",
+      "name": "J-901",
+      "description": "9F J区房间",
+      "x": 250,
+      "y": 1450
+    },
+    "J-902": {
+      "id": "J-902",
+      "type": "room",
+      "floor": "9F",
+      "zone": "J",
+      "name": "J-902",
+      "description": "9F J区房间",
+      "x": 250,
+      "y": 1570
+    },
+    "J-903": {
+      "id": "J-903",
+      "type": "room",
+      "floor": "9F",
+      "zone": "J",
+      "name": "J-903",
+      "description": "9F J区房间",
+      "x": 250,
+      "y": 1690
+    },
+    "J-904": {
+      "id": "J-904",
+      "type": "room",
+      "floor": "9F",
+      "zone": "J",
+      "name": "J-904",
+      "description": "9F J区房间",
+      "x": 330,
+      "y": 1450
+    },
+    "J-905": {
+      "id": "J-905",
+      "type": "room",
+      "floor": "9F",
+      "zone": "J",
+      "name": "J-905",
+      "description": "9F J区房间",
+      "x": 330,
+      "y": 1570
+    },
+    "J-906": {
+      "id": "J-906",
+      "type": "room",
+      "floor": "9F",
+      "zone": "J",
+      "name": "J-906",
+      "description": "9F J区房间",
+      "x": 330,
+      "y": 1690
+    },
+    "J-907": {
+      "id": "J-907",
+      "type": "room",
+      "floor": "9F",
+      "zone": "J",
+      "name": "J-907",
+      "description": "9F J区房间",
+      "x": 410,
+      "y": 1450
+    },
+    "J-908": {
+      "id": "J-908",
+      "type": "room",
+      "floor": "9F",
+      "zone": "J",
+      "name": "J-908",
+      "description": "9F J区房间",
+      "x": 410,
+      "y": 1570
+    },
+    "J-909": {
+      "id": "J-909",
+      "type": "room",
+      "floor": "9F",
+      "zone": "J",
+      "name": "J-909",
+      "description": "9F J区房间",
+      "x": 410,
+      "y": 1690
+    },
+    "J-1001": {
+      "id": "J-1001",
+      "type": "room",
+      "floor": "10F",
+      "zone": "J",
+      "name": "J-1001",
+      "description": "10F J区房间",
+      "x": 250,
+      "y": 1450
+    },
+    "J-1002": {
+      "id": "J-1002",
+      "type": "room",
+      "floor": "10F",
+      "zone": "J",
+      "name": "J-1002",
+      "description": "10F J区房间",
+      "x": 250,
+      "y": 1570
+    },
+    "J-1003": {
+      "id": "J-1003",
+      "type": "room",
+      "floor": "10F",
+      "zone": "J",
+      "name": "J-1003",
+      "description": "10F J区房间",
+      "x": 250,
+      "y": 1690
+    },
+    "J-1004": {
+      "id": "J-1004",
+      "type": "room",
+      "floor": "10F",
+      "zone": "J",
+      "name": "J-1004",
+      "description": "10F J区房间",
+      "x": 330,
+      "y": 1450
+    },
+    "J-1005": {
+      "id": "J-1005",
+      "type": "room",
+      "floor": "10F",
+      "zone": "J",
+      "name": "J-1005",
+      "description": "10F J区房间",
+      "x": 330,
+      "y": 1570
+    },
+    "J-1006": {
+      "id": "J-1006",
+      "type": "room",
+      "floor": "10F",
+      "zone": "J",
+      "name": "J-1006",
+      "description": "10F J区房间",
+      "x": 330,
+      "y": 1690
+    },
+    "J-1007": {
+      "id": "J-1007",
+      "type": "room",
+      "floor": "10F",
+      "zone": "J",
+      "name": "J-1007",
+      "description": "10F J区房间",
+      "x": 410,
+      "y": 1450
+    },
+    "J-1008": {
+      "id": "J-1008",
+      "type": "room",
+      "floor": "10F",
+      "zone": "J",
+      "name": "J-1008",
+      "description": "10F J区房间",
+      "x": 410,
+      "y": 1570
+    },
+    "J-1009": {
+      "id": "J-1009",
+      "type": "room",
+      "floor": "10F",
+      "zone": "J",
+      "name": "J-1009",
+      "description": "10F J区房间",
+      "x": 410,
+      "y": 1690
+    }
+  }
+}

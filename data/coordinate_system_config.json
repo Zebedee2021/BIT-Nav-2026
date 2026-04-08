@@ -1,0 +1,17 @@
+{
+  "origin_px": [
+    1500,
+    1650
+  ],
+  "scale_factor": 0.06666666666666667,
+  "image_size": [
+    3000,
+    2000
+  ],
+  "coordinate_system": {
+    "origin": "圆形教室中心",
+    "x_axis": "向右为正(东)",
+    "y_axis": "向上为正(北)",
+    "z_axis": "楼层高度"
+  }
+}

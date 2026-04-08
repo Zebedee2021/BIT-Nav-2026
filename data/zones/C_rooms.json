@@ -1,0 +1,636 @@
+{
+  "zone": "C",
+  "node_count": 63,
+  "nodes": {
+    "C-101": {
+      "id": "C-101",
+      "type": "room",
+      "floor": "1F",
+      "zone": "C",
+      "name": "C-101",
+      "description": "1F C区房间",
+      "x": 2820,
+      "y": 280
+    },
+    "C-102": {
+      "id": "C-102",
+      "type": "room",
+      "floor": "1F",
+      "zone": "C",
+      "name": "C-102",
+      "description": "1F C区房间",
+      "x": 2820,
+      "y": 400
+    },
+    "C-103": {
+      "id": "C-103",
+      "type": "room",
+      "floor": "1F",
+      "zone": "C",
+      "name": "C-103",
+      "description": "1F C区房间",
+      "x": 2820,
+      "y": 520
+    },
+    "C-104": {
+      "id": "C-104",
+      "type": "room",
+      "floor": "1F",
+      "zone": "C",
+      "name": "C-104",
+      "description": "1F C区房间",
+      "x": 2820,
+      "y": 640
+    },
+    "C-105": {
+      "id": "C-105",
+      "type": "room",
+      "floor": "1F",
+      "zone": "C",
+      "name": "C-105",
+      "description": "1F C区房间",
+      "x": 2820,
+      "y": 760
+    },
+    "C-106": {
+      "id": "C-106",
+      "type": "room",
+      "floor": "1F",
+      "zone": "C",
+      "name": "C-106",
+      "description": "1F C区房间",
+      "x": 2820,
+      "y": 880
+    },
+    "C-107": {
+      "id": "C-107",
+      "type": "room",
+      "floor": "1F",
+      "zone": "C",
+      "name": "C-107",
+      "description": "1F C区房间",
+      "x": 2820,
+      "y": 1000
+    },
+    "C-108": {
+      "id": "C-108",
+      "type": "room",
+      "floor": "1F",
+      "zone": "C",
+      "name": "C-108",
+      "description": "1F C区房间",
+      "x": 2820,
+      "y": 1120
+    },
+    "C-109": {
+      "id": "C-109",
+      "type": "room",
+      "floor": "1F",
+      "zone": "C",
+      "name": "C-109",
+      "description": "1F C区房间",
+      "x": 2820,
+      "y": 1240
+    },
+    "C-201": {
+      "id": "C-201",
+      "type": "room",
+      "floor": "2F",
+      "zone": "C",
+      "name": "C-201",
+      "description": "2F C区房间",
+      "x": 2820,
+      "y": 280
+    },
+    "C-202": {
+      "id": "C-202",
+      "type": "room",
+      "floor": "2F",
+      "zone": "C",
+      "name": "C-202",
+      "description": "2F C区房间",
+      "x": 2820,
+      "y": 400
+    },
+    "C-203": {
+      "id": "C-203",
+      "type": "room",
+      "floor": "2F",
+      "zone": "C",
+      "name": "C-203",
+      "description": "2F C区房间",
+      "x": 2820,
+      "y": 520
+    },
+    "C-204": {
+      "id": "C-204",
+      "type": "room",
+      "floor": "2F",
+      "zone": "C",
+      "name": "C-204",
+      "description": "2F C区房间",
+      "x": 2820,
+      "y": 640
+    },
+    "C-205": {
+      "id": "C-205",
+      "type": "room",
+      "floor": "2F",
+      "zone": "C",
+      "name": "C-205",
+      "description": "2F C区房间",
+      "x": 2820,
+      "y": 760
+    },
+    "C-206": {
+      "id": "C-206",
+      "type": "room",
+      "floor": "2F",
+      "zone": "C",
+      "name": "C-206",
+      "description": "2F C区房间",
+      "x": 2820,
+      "y": 880
+    },
+    "C-207": {
+      "id": "C-207",
+      "type": "room",
+      "floor": "2F",
+      "zone": "C",
+      "name": "C-207",
+      "description": "2F C区房间",
+      "x": 2820,
+      "y": 1000
+    },
+    "C-208": {
+      "id": "C-208",
+      "type": "room",
+      "floor": "2F",
+      "zone": "C",
+      "name": "C-208",
+      "description": "2F C区房间",
+      "x": 2820,
+      "y": 1120
+    },
+    "C-301": {
+      "id": "C-301",
+      "type": "room",
+      "floor": "3F",
+      "zone": "C",
+      "name": "C-301",
+      "description": "3F C区房间",
+      "x": 2820,
+      "y": 280
+    },
+    "C-302": {
+      "id": "C-302",
+      "type": "room",
+      "floor": "3F",
+      "zone": "C",
+      "name": "C-302",
+      "description": "3F C区房间",
+      "x": 2820,
+      "y": 400
+    },
+    "C-303": {
+      "id": "C-303",
+      "type": "room",
+      "floor": "3F",
+      "zone": "C",
+      "name": "C-303",
+      "description": "3F C区房间",
+      "x": 2820,
+      "y": 520
+    },
+    "C-304": {
+      "id": "C-304",
+      "type": "room",
+      "floor": "3F",
+      "zone": "C",
+      "name": "C-304",
+      "description": "3F C区房间",
+      "x": 2820,
+      "y": 640
+    },
+    "C-305": {
+      "id": "C-305",
+      "type": "room",
+      "floor": "3F",
+      "zone": "C",
+      "name": "C-305",
+      "description": "3F C区房间",
+      "x": 2820,
+      "y": 760
+    },
+    "C-306": {
+      "id": "C-306",
+      "type": "room",
+      "floor": "3F",
+      "zone": "C",
+      "name": "C-306",
+      "description": "3F C区房间",
+      "x": 2820,
+      "y": 880
+    },
+    "C-307": {
+      "id": "C-307",
+      "type": "room",
+      "floor": "3F",
+      "zone": "C",
+      "name": "C-307",
+      "description": "3F C区房间",
+      "x": 2820,
+      "y": 1000
+    },
+    "C-308": {
+      "id": "C-308",
+      "type": "room",
+      "floor": "3F",
+      "zone": "C",
+      "name": "C-308",
+      "description": "3F C区房间",
+      "x": 2820,
+      "y": 1120
+    },
+    "C-401": {
+      "id": "C-401",
+      "type": "room",
+      "floor": "4F",
+      "zone": "C",
+      "name": "C-401",
+      "description": "4F C区房间",
+      "x": 2820,
+      "y": 280
+    },
+    "C-402": {
+      "id": "C-402",
+      "type": "room",
+      "floor": "4F",
+      "zone": "C",
+      "name": "C-402",
+      "description": "4F C区房间",
+      "x": 2820,
+      "y": 400
+    },
+    "C-403": {
+      "id": "C-403",
+      "type": "room",
+      "floor": "4F",
+      "zone": "C",
+      "name": "C-403",
+      "description": "4F C区房间",
+      "x": 2820,
+      "y": 520
+    },
+    "C-404": {
+      "id": "C-404",
+      "type": "room",
+      "floor": "4F",
+      "zone": "C",
+      "name": "C-404",
+      "description": "4F C区房间",
+      "x": 2820,
+      "y": 640
+    },
+    "C-405": {
+      "id": "C-405",
+      "type": "room",
+      "floor": "4F",
+      "zone": "C",
+      "name": "C-405",
+      "description": "4F C区房间",
+      "x": 2820,
+      "y": 760
+    },
+    "C-406": {
+      "id": "C-406",
+      "type": "room",
+      "floor": "4F",
+      "zone": "C",
+      "name": "C-406",
+      "description": "4F C区房间",
+      "x": 2820,
+      "y": 880
+    },
+    "C-407": {
+      "id": "C-407",
+      "type": "room",
+      "floor": "4F",
+      "zone": "C",
+      "name": "C-407",
+      "description": "4F C区房间",
+      "x": 2820,
+      "y": 1000
+    },
+    "C-408": {
+      "id": "C-408",
+      "type": "room",
+      "floor": "4F",
+      "zone": "C",
+      "name": "C-408",
+      "description": "4F C区房间",
+      "x": 2820,
+      "y": 1120
+    },
+    "C-501": {
+      "id": "C-501",
+      "type": "room",
+      "floor": "5F",
+      "zone": "C",
+      "name": "C-501",
+      "description": "5F C区房间",
+      "x": 2820,
+      "y": 280
+    },
+    "C-502": {
+      "id": "C-502",
+      "type": "room",
+      "floor": "5F",
+      "zone": "C",
+      "name": "C-502",
+      "description": "5F C区房间",
+      "x": 2820,
+      "y": 400
+    },
+    "C-503": {
+      "id": "C-503",
+      "type": "room",
+      "floor": "5F",
+      "zone": "C",
+      "name": "C-503",
+      "description": "5F C区房间",
+      "x": 2820,
+      "y": 520
+    },
+    "C-504": {
+      "id": "C-504",
+      "type": "room",
+      "floor": "5F",
+      "zone": "C",
+      "name": "C-504",
+      "description": "5F C区房间",
+      "x": 2820,
+      "y": 640
+    },
+    "C-505": {
+      "id": "C-505",
+      "type": "room",
+      "floor": "5F",
+      "zone": "C",
+      "name": "C-505",
+      "description": "5F C区房间",
+      "x": 2820,
+      "y": 760
+    },
+    "C-601": {
+      "id": "C-601",
+      "type": "room",
+      "floor": "6F",
+      "zone": "C",
+      "name": "C-601",
+      "description": "6F C区房间",
+      "x": 2820,
+      "y": 280
+    },
+    "C-602": {
+      "id": "C-602",
+      "type": "room",
+      "floor": "6F",
+      "zone": "C",
+      "name": "C-602",
+      "description": "6F C区房间",
+      "x": 2820,
+      "y": 400
+    },
+    "C-603": {
+      "id": "C-603",
+      "type": "room",
+      "floor": "6F",
+      "zone": "C",
+      "name": "C-603",
+      "description": "6F C区房间",
+      "x": 2820,
+      "y": 520
+    },
+    "C-604": {
+      "id": "C-604",
+      "type": "room",
+      "floor": "6F",
+      "zone": "C",
+      "name": "C-604",
+      "description": "6F C区房间",
+      "x": 2820,
+      "y": 640
+    },
+    "C-605": {
+      "id": "C-605",
+      "type": "room",
+      "floor": "6F",
+      "zone": "C",
+      "name": "C-605",
+      "description": "6F C区房间",
+      "x": 2820,
+      "y": 760
+    },
+    "C-701": {
+      "id": "C-701",
+      "type": "room",
+      "floor": "7F",
+      "zone": "C",
+      "name": "C-701",
+      "description": "7F C区房间",
+      "x": 2820,
+      "y": 280
+    },
+    "C-702": {
+      "id": "C-702",
+      "type": "room",
+      "floor": "7F",
+      "zone": "C",
+      "name": "C-702",
+      "description": "7F C区房间",
+      "x": 2820,
+      "y": 400
+    },
+    "C-703": {
+      "id": "C-703",
+      "type": "room",
+      "floor": "7F",
+      "zone": "C",
+      "name": "C-703",
+      "description": "7F C区房间",
+      "x": 2820,
+      "y": 520
+    },
+    "C-704": {
+      "id": "C-704",
+      "type": "room",
+      "floor": "7F",
+      "zone": "C",
+      "name": "C-704",
+      "description": "7F C区房间",
+      "x": 2820,
+      "y": 640
+    },
+    "C-705": {
+      "id": "C-705",
+      "type": "room",
+      "floor": "7F",
+      "zone": "C",
+      "name": "C-705",
+      "description": "7F C区房间",
+      "x": 2820,
+      "y": 760
+    },
+    "C-801": {
+      "id": "C-801",
+      "type": "room",
+      "floor": "8F",
+      "zone": "C",
+      "name": "C-801",
+      "description": "8F C区房间",
+      "x": 2820,
+      "y": 280
+    },
+    "C-802": {
+      "id": "C-802",
+      "type": "room",
+      "floor": "8F",
+      "zone": "C",
+      "name": "C-802",
+      "description": "8F C区房间",
+      "x": 2820,
+      "y": 400
+    },
+    "C-803": {
+      "id": "C-803",
+      "type": "room",
+      "floor": "8F",
+      "zone": "C",
+      "name": "C-803",
+      "description": "8F C区房间",
+      "x": 2820,
+      "y": 520
+    },
+    "C-804": {
+      "id": "C-804",
+      "type": "room",
+      "floor": "8F",
+      "zone": "C",
+      "name": "C-804",
+      "description": "8F C区房间",
+      "x": 2820,
+      "y": 640
+    },
+    "C-805": {
+      "id": "C-805",
+      "type": "room",
+      "floor": "8F",
+      "zone": "C",
+      "name": "C-805",
+      "description": "8F C区房间",
+      "x": 2820,
+      "y": 760
+    },
+    "C-901": {
+      "id": "C-901",
+      "type": "room",
+      "floor": "9F",
+      "zone": "C",
+      "name": "C-901",
+      "description": "9F C区房间",
+      "x": 2820,
+      "y": 280
+    },
+    "C-902": {
+      "id": "C-902",
+      "type": "room",
+      "floor": "9F",
+      "zone": "C",
+      "name": "C-902",
+      "description": "9F C区房间",
+      "x": 2820,
+      "y": 400
+    },
+    "C-903": {
+      "id": "C-903",
+      "type": "room",
+      "floor": "9F",
+      "zone": "C",
+      "name": "C-903",
+      "description": "9F C区房间",
+      "x": 2820,
+      "y": 520
+    },
+    "C-904": {
+      "id": "C-904",
+      "type": "room",
+      "floor": "9F",
+      "zone": "C",
+      "name": "C-904",
+      "description": "9F C区房间",
+      "x": 2820,
+      "y": 640
+    },
+    "C-905": {
+      "id": "C-905",
+      "type": "room",
+      "floor": "9F",
+      "zone": "C",
+      "name": "C-905",
+      "description": "9F C区房间",
+      "x": 2820,
+      "y": 760
+    },
+    "C-1001": {
+      "id": "C-1001",
+      "type": "room",
+      "floor": "10F",
+      "zone": "C",
+      "name": "C-1001",
+      "description": "10F C区房间",
+      "x": 2820,
+      "y": 280
+    },
+    "C-1002": {
+      "id": "C-1002",
+      "type": "room",
+      "floor": "10F",
+      "zone": "C",
+      "name": "C-1002",
+      "description": "10F C区房间",
+      "x": 2820,
+      "y": 400
+    },
+    "C-1003": {
+      "id": "C-1003",
+      "type": "room",
+      "floor": "10F",
+      "zone": "C",
+      "name": "C-1003",
+      "description": "10F C区房间",
+      "x": 2820,
+      "y": 520
+    },
+    "C-1004": {
+      "id": "C-1004",
+      "type": "room",
+      "floor": "10F",
+      "zone": "C",
+      "name": "C-1004",
+      "description": "10F C区房间",
+      "x": 2820,
+      "y": 640
+    },
+    "C-1005": {
+      "id": "C-1005",
+      "type": "room",
+      "floor": "10F",
+      "zone": "C",
+      "name": "C-1005",
+      "description": "10F C区房间",
+      "x": 2820,
+      "y": 760
+    }
+  }
+}

@@ -46,7 +46,7 @@ class NavigationDirection:
 
 
 class OrientationNavigator:
-    """方位感知导航器"""
+    """方位感知导航器（支持多种楼层图朝向）"""
     
     # 方向阈值（角度范围）
     DIRECTION_RANGES = [
@@ -60,15 +60,34 @@ class OrientationNavigator:
         (292.5, 337.5, Direction.NORTHWEST),
     ]
     
-    def __init__(self, pixel_to_meter: float = 0.06):
+    # 楼层图朝向配置
+    # 根据坐标系规范:
+    # - 建筑数据坐标: x轴向南, y轴向西 (西北角为原点)
+    # - 高清楼层图: 上北下南、左西右东（标准屏幕坐标）
+    FLOORPLAN_ORIENTATIONS = {
+        'standard': {
+            'north': 'up', 
+            'east': 'right',
+            'coord_system': 'screen'  # 屏幕坐标系: Y向下
+        },
+        'hires': {
+            'north': 'up', 
+            'east': 'right',
+            'coord_system': 'screen'  # 屏幕坐标系: Y向下
+        },
+    }
+    
+    def __init__(self, pixel_to_meter: float = 0.0667, floorplan_orientation: str = 'hires'):
         """
         初始化导航器
         
         Args:
-            pixel_to_meter: 像素到米的转换比例（默认0.06米/像素, 3000px≈180m）
+            pixel_to_meter: 像素到米的转换比例（默认0.0667米/像素 = 15px/m）
+            floorplan_orientation: 楼层图朝向 ('standard' 或 'hires')
         """
         self.pixel_to_meter = pixel_to_meter
         self.user_heading = 0  # 用户当前朝向（0为北）
+        self.orientation = self.FLOORPLAN_ORIENTATIONS.get(floorplan_orientation, self.FLOORPLAN_ORIENTATIONS['hires'])
     
     def set_user_heading(self, heading: float):
         """
@@ -84,19 +103,32 @@ class OrientationNavigator:
         """
         计算从from_point到to_point的方向
         
+        建筑数据坐标系:
+        - 原点: 建筑西北角
+        - x轴: 向南 (右下方向)
+        - y轴: 向西 (左下方向)
+        
         Args:
-            from_point: 起点坐标 (x, y)
-            to_point: 终点坐标 (x, y)
+            from_point: 起点坐标 (x, y) - 建筑数据坐标
+            to_point: 终点坐标 (x, y) - 建筑数据坐标
         
         Returns:
             NavigationDirection对象
         """
-        dx = to_point[0] - from_point[0]
-        dy = to_point[1] - from_point[1]
+        dx = to_point[0] - from_point[0]  # 正值 = 向南
+        dy = to_point[1] - from_point[1]  # 正值 = 向西
         
-        # 计算角度（0为北，顺时针）
-        # 注意：在屏幕坐标系中，y轴向下为正，需要翻转
-        angle = math.degrees(math.atan2(dx, -dy)) % 360
+        # 根据坐标系转换计算地理方位角
+        # 地理方位: 0=北, 90=东, 180=南, 270=西
+        # 建筑坐标: X向南, Y向西
+        # 转换: 方位角 = atan2(东西方向, 南北方向)
+        
+        # 东西方向: -dy (向西为负，向东为正)
+        # 南北方向: dx (向南为正，向北为负)
+        east_west = -dy  # 转为东为正
+        north_south = -dx  # 转为北为正
+        
+        angle = math.degrees(math.atan2(east_west, north_south)) % 360
         
         # 计算距离
         distance_pixels = math.sqrt(dx * dx + dy * dy)

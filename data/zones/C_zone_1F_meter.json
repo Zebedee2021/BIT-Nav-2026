@@ -1,0 +1,440 @@
+{
+  "zone": "C",
+  "floor": 1,
+  "coordinate_system": {
+    "origin": "圆形教室中心",
+    "unit": "meters",
+    "scale_factor": 0.06666666666666667
+  },
+  "rooms": [
+    {
+      "id": "C-101",
+      "type": "classroom",
+      "zone": "C",
+      "floor": 1,
+      "center": {
+        "x": 70.0,
+        "y": 86.67,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2550,
+        "y": 350
+      }
+    },
+    {
+      "id": "C-102",
+      "type": "classroom",
+      "zone": "C",
+      "floor": 1,
+      "center": {
+        "x": 70.0,
+        "y": 80.0,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2550,
+        "y": 450
+      }
+    },
+    {
+      "id": "C-103",
+      "type": "classroom",
+      "zone": "C",
+      "floor": 1,
+      "center": {
+        "x": 70.0,
+        "y": 73.33,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2550,
+        "y": 550
+      }
+    },
+    {
+      "id": "C-104",
+      "type": "classroom",
+      "zone": "C",
+      "floor": 1,
+      "center": {
+        "x": 70.0,
+        "y": 66.67,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2550,
+        "y": 650
+      }
+    },
+    {
+      "id": "C-105",
+      "type": "classroom",
+      "zone": "C",
+      "floor": 1,
+      "center": {
+        "x": 70.0,
+        "y": 60.0,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2550,
+        "y": 750
+      }
+    },
+    {
+      "id": "C-106",
+      "type": "classroom",
+      "zone": "C",
+      "floor": 1,
+      "center": {
+        "x": 70.0,
+        "y": 53.33,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2550,
+        "y": 850
+      }
+    },
+    {
+      "id": "C-107",
+      "type": "classroom",
+      "zone": "C",
+      "floor": 1,
+      "center": {
+        "x": 70.0,
+        "y": 46.67,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2550,
+        "y": 950
+      }
+    },
+    {
+      "id": "C-108",
+      "type": "classroom",
+      "zone": "C",
+      "floor": 1,
+      "center": {
+        "x": 70.0,
+        "y": 40.0,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2550,
+        "y": 1050
+      }
+    },
+    {
+      "id": "C-109",
+      "type": "classroom",
+      "zone": "C",
+      "floor": 1,
+      "center": {
+        "x": 70.0,
+        "y": 33.33,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2550,
+        "y": 1150
+      }
+    }
+  ],
+  "door_nodes": [
+    {
+      "id": "door_C-101",
+      "type": "door",
+      "room_id": "C-101",
+      "location": {
+        "x": 67.33,
+        "y": 86.67,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2510,
+        "y": 350
+      }
+    },
+    {
+      "id": "door_C-102",
+      "type": "door",
+      "room_id": "C-102",
+      "location": {
+        "x": 67.33,
+        "y": 80.0,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2510,
+        "y": 450
+      }
+    },
+    {
+      "id": "door_C-103",
+      "type": "door",
+      "room_id": "C-103",
+      "location": {
+        "x": 67.33,
+        "y": 73.33,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2510,
+        "y": 550
+      }
+    },
+    {
+      "id": "door_C-104",
+      "type": "door",
+      "room_id": "C-104",
+      "location": {
+        "x": 67.33,
+        "y": 66.67,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2510,
+        "y": 650
+      }
+    },
+    {
+      "id": "door_C-105",
+      "type": "door",
+      "room_id": "C-105",
+      "location": {
+        "x": 67.33,
+        "y": 60.0,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2510,
+        "y": 750
+      }
+    },
+    {
+      "id": "door_C-106",
+      "type": "door",
+      "room_id": "C-106",
+      "location": {
+        "x": 67.33,
+        "y": 53.33,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2510,
+        "y": 850
+      }
+    },
+    {
+      "id": "door_C-107",
+      "type": "door",
+      "room_id": "C-107",
+      "location": {
+        "x": 67.33,
+        "y": 46.67,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2510,
+        "y": 950
+      }
+    },
+    {
+      "id": "door_C-108",
+      "type": "door",
+      "room_id": "C-108",
+      "location": {
+        "x": 67.33,
+        "y": 40.0,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2510,
+        "y": 1050
+      }
+    },
+    {
+      "id": "door_C-109",
+      "type": "door",
+      "room_id": "C-109",
+      "location": {
+        "x": 67.33,
+        "y": 33.33,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2510,
+        "y": 1150
+      }
+    }
+  ],
+  "waypoints": [
+    {
+      "id": "wp_c_01",
+      "type": "waypoint",
+      "location": {
+        "x": 63.33,
+        "y": 86.67,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2450,
+        "y": 350
+      }
+    },
+    {
+      "id": "wp_c_02",
+      "type": "waypoint",
+      "location": {
+        "x": 63.33,
+        "y": 73.33,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2450,
+        "y": 550
+      }
+    },
+    {
+      "id": "wp_c_03",
+      "type": "waypoint",
+      "location": {
+        "x": 63.33,
+        "y": 60.0,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2450,
+        "y": 750
+      }
+    },
+    {
+      "id": "wp_c_04",
+      "type": "waypoint",
+      "location": {
+        "x": 63.33,
+        "y": 46.67,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2450,
+        "y": 950
+      }
+    },
+    {
+      "id": "wp_c_05",
+      "type": "waypoint",
+      "location": {
+        "x": 63.33,
+        "y": 33.33,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2450,
+        "y": 1150
+      }
+    },
+    {
+      "id": "wp_c_hall_01",
+      "type": "waypoint",
+      "location": {
+        "x": 53.33,
+        "y": 60.0,
+        "z": 1
+      },
+      "pixel_coords": {
+        "x": 2300,
+        "y": 750
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "door_C-101",
+      "to": "wp_c_01",
+      "type": "door_to_corridor",
+      "distance": 4.0
+    },
+    {
+      "from": "door_C-102",
+      "to": "wp_c_01",
+      "type": "door_to_corridor",
+      "distance": 7.77
+    },
+    {
+      "from": "door_C-103",
+      "to": "wp_c_02",
+      "type": "door_to_corridor",
+      "distance": 4.0
+    },
+    {
+      "from": "door_C-104",
+      "to": "wp_c_02",
+      "type": "door_to_corridor",
+      "distance": 7.77
+    },
+    {
+      "from": "door_C-105",
+      "to": "wp_c_03",
+      "type": "door_to_corridor",
+      "distance": 4.0
+    },
+    {
+      "from": "door_C-106",
+      "to": "wp_c_03",
+      "type": "door_to_corridor",
+      "distance": 7.77
+    },
+    {
+      "from": "door_C-107",
+      "to": "wp_c_04",
+      "type": "door_to_corridor",
+      "distance": 4.0
+    },
+    {
+      "from": "door_C-108",
+      "to": "wp_c_04",
+      "type": "door_to_corridor",
+      "distance": 7.77
+    },
+    {
+      "from": "door_C-109",
+      "to": "wp_c_05",
+      "type": "door_to_corridor",
+      "distance": 4.0
+    },
+    {
+      "from": "wp_c_01",
+      "to": "wp_c_02",
+      "type": "corridor",
+      "distance": 13.33
+    },
+    {
+      "from": "wp_c_02",
+      "to": "wp_c_03",
+      "type": "corridor",
+      "distance": 13.33
+    },
+    {
+      "from": "wp_c_03",
+      "to": "wp_c_04",
+      "type": "corridor",
+      "distance": 13.33
+    },
+    {
+      "from": "wp_c_04",
+      "to": "wp_c_05",
+      "type": "corridor",
+      "distance": 13.33
+    },
+    {
+      "from": "wp_c_05",
+      "to": "wp_c_hall_01",
+      "type": "corridor",
+      "distance": 28.48
+    }
+  ]
+}
